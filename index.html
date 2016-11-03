@@ -32,7 +32,9 @@ comments: false
 <section class="container content">
     <div class="columns">
         <div class="column two-thirds" >
+            {% include sidebar-search.html %} 
             <ol class="repo-list">
+            
                 {% for post in paginator.posts %}
                 <li class="repo-list-item">
                     <h3 class="repo-list-name">
@@ -56,10 +58,10 @@ comments: false
                 {% endfor %}
             </ol>
         </div>
-        <div class="column one-third">
-            {% include sidebar-search.html %}
+<!--         <div class="column one-third">
+            {% include sidebar-search.html %}            
             {% include sidebar-popular-repo.html %}
-        </div>
+        </div> -->
     </div>
     <div class="pagination text-align">
       <div class="btn-group">
