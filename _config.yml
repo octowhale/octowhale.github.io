@@ -19,8 +19,8 @@ side_bar_repo_limit: 5
 author: Hsin Tang
 # organization: Sogou, Inc.
 # organization_url: https://tangx.in
-location: Beijing, China
-email: chumpma@gmail.com
+location: Chengdu, China
+email: uyinn28@gmail.com
 
 # ---------------- #
 #    Navigation    #
@@ -95,19 +95,19 @@ comments_provider: disqus
 # !!!重要!!! 请修改下面两个用户名为你自己申请的
 # !!!Important!!! Please modify usernames below to yours
 # duoshuo_username: mazhuang
-disqus_username: uyinn.com
+disqus_username: tangx
 # 在使用 disqus 的时候可点击显示多说评论框
 lazy_load_duoshuo: true
 
 # ---------------- #
 #    Analytics     #
 # ---------------- #
-google:
-    analytics_id: UA-80669434-1
+# google:
+    # analytics_id: UA-80669434-1
 
 # ---------------- #
 #      Datas       #
 # ---------------- #
-skill_software_keywords: [Java, C++, Python, Design Patterns]
-skill_mobile_app_keywords: [Android, Reverse Engineering]
-skill_windows_keywords: [Win32 SDK, DuiLib, WTL, COM, WinDbg]
+# skill_software_keywords: [Java, C++, Python, Design Patterns]
+# skill_mobile_app_keywords: [Android, Reverse Engineering]
+# skill_windows_keywords: [Win32 SDK, DuiLib, WTL, COM, WinDbg]
