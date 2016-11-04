@@ -11,7 +11,7 @@ permalink: /about/
 
 ## 联系
 
-* GitHub：[@mzlogin](https://github.com/octowhale)
+* GitHub：[@octowhale](https://github.com/octowhale)
 *
 
 ## Skill Keywords
