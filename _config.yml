@@ -2,7 +2,6 @@
 #   Main Configs   #
 # ---------------- #
 baseurl:
-url: https://tangx.in
 date_format: "ordinal"
 title: aloha.Mr.Tang
 subtitle: "aloha.Mr.Tang"
