@@ -1,7 +1,7 @@
 ---
 layout: post
 title: python 中使用参数选项 getopt
-categories: [python, getopt, code]
+categories: [python, library, code]
 description: 在python中使用指定可选参数功能。增强程序适用性
 keywords: python, code
 ---
