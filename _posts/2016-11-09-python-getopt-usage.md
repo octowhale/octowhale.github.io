@@ -10,7 +10,7 @@ keywords: python, code
 
 getopt 库是 python 内建库，以使用 getopt 库为程序指定可选参数。
 
-```
+```python
 # @python_version: python_x86 2.7.11
 
 import getopt
@@ -25,7 +25,7 @@ import getopt
 + 短选择项的符号必须单字母，如果需要使用参数，选择项符号后需要使用 `:`（如 `'o:'`。所有短选择项构成一个**字符串**传递给 `getopt` 。
 + 长选择项的符号通常使用单词或短语，如果需要使用参数，选择项符号后需要使用 `=`（如 `'output='` ）。所有长选择项构成一个列表。
 
-```
+```python
 try:
     opts, args = getopt.getopt(sys.argv[1:], 'ho:', ['help', 'output='])
 except getopt.GetoptError, err:
@@ -47,7 +47,7 @@ except getopt.GetoptError, err:
 + opts 列表中的元素以元组的方式成对出现，分别对应选择项及其值 ` ('opt','arg') ` 。如果 opt 是无参数选择项，则对应的 arg 为空 `('opt','')` 。
 + 传递多个参数，必须使用列表。
 
-```
+```python
 import sys
 import optget
 
@@ -84,7 +84,7 @@ args的值为： ['arg1', 'arg2']
 
 在获取到 `opts` 之后， 我们可以使用循环获取选项，并判断其是否出现。
 
-```
+```python
 
 import sys
 import os
