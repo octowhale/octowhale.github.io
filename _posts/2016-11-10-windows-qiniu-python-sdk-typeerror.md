@@ -2,7 +2,7 @@
 layout: post
 title: windows 下 qiniu-python-sdk 错误及解决方法
 categories: [python, code, qiniu]
-description: windows下调用qiniu-python-sdk上传文件时报错：TypeError: unsupported operand type(s) for +: 'NoneType' and 'str'
+description: "windows下调用qiniu-python-sdk上传文件时报错：TypeError: unsupported operand type(s) for +: 'NoneType' and 'str'"
 keywords: python, qiniu, sdk
 ---
 
