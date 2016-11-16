@@ -8,11 +8,14 @@ menu: 关于
 permalink: /about/
 ---
 
+我是唐鑫，一个成都小伙。
+正为成为 1% 而努力。
 
 ## 联系
 
 * GitHub：[@octowhale](https://github.com/octowhale)
-*
+* 博客：[tangx.in](http://tangx.in) 
++ 准备下线的：[博客](http://www.uyinn.com)
 
 ## Skill Keywords
 
