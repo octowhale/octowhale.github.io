@@ -8,4 +8,4 @@ keywords:
 
 # 仅仅是为了测试怎么发图片
 
-[ tiger-panda.jpg ](/images/post/blog/8-giant-panda-ailuropoda-melanoleuca-katherine-feng.jpg)
+![tiger-panda.jpg](/images/post/blog/8-giant-panda-ailuropoda-melanoleuca-katherine-feng.jpg)
