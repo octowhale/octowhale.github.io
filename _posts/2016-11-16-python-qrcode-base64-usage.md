@@ -1,12 +1,12 @@
 ---
 layout: post
-title: 使用python生成base64编码和二维码
-categories: [python, code]
+title: 使用python生成base64编码和qrcode二维码
+categories: [python, code, library]
 description: "使用python对字符串进行base64编码和解码，以及生成字符串的二维码"
 keywords: python, qrcode, encrypt
 ---
 
-# 使用python对字符串进行base64编码以及生成字符串二维码
+# 使用python对字符串进行base64编码以及生成字符串qrcode二维码
 
 最近将ss服务器搬到免费docker上面去了。由于是免费的，每次容器重启的时候都会重新绑定服务器地址和容器端口。然而作为一个懒鬼，并不想每次都手动复制粘贴这些信息，于是新需求就是docker容器服务绑定完成后，自己获取服务信息并编码，并通过邮件发送。
 
