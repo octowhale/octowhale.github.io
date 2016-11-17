@@ -1,3 +1,39 @@
+---
+layout: post
+title: python 字典与 json 异同
+categories: [python, library]
+description: "使用 python 解析 json 字符串，以及字典与 json 的差异"
+keywords: python, 解析, 参数
+---
+
+
+# json 与 dict
+
+从结构上来看， json 字符出与 python 字典看起来很相似，都是大括号 `{}` 括起来的键值对 `{key:value}`。
+
+` s='{"number":10,"map":"china","10":"the number"}' ` 该字符串可以通过**字符串转字典 `eval(s)` **也可以通过**json转字典 `json.loads(s)` **方式转换成字典  
+
+```
+s='{"number":10,"map":"china","10":"the number"}'
+
+s_d=eval(s)
+print s_d
+# {'map': 'china', 'number': 10, '10': 'the number'}
+
+
+import json
+
+s_j=json.loads(s)
+print s_j
+# {u'map': u'china', u'number': 10, u'10': u'the number'}
+
+s_d	is s_j
+# False
+
+s_d	== s_j
+# True
+
+print type(s_d)
 # <type 'dict'>
 ```
 
