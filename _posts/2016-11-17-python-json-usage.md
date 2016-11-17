@@ -91,6 +91,7 @@ if __name__ == '__main__':
 ![json.png](/images/post/2016-11-17-python-json-usage-01.png)
 
 从上面代码中的结果与图片对应部分我们可以看到
+
 + 通过命令 ` json.loads(s) ` 将 json 字符串转换成了字典。
 + 关键字如 ` null , false ` 也转换成了对应字典的关键字 ` None, False `
 + 取值方式就是字典操作。
