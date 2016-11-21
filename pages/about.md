@@ -8,34 +8,74 @@ menu: 关于
 permalink: /about/
 ---
 
-我是唐鑫，一个成都小伙。
-正为成为 1% 而努力。
+努力，成为 1% 。
 
 ## 联系
 
 * GitHub：[@octowhale](https://github.com/octowhale)
-* 博客：[tangx.in](http://tangx.in) 
-+ 准备下线的：[博客](http://www.uyinn.com)
+* 个人网站：[tangx.in](http://tangx.in) & [uyinn.com](http://www.uyinn.com)
 
-## Skill Keywords
 
-#### Software Engineer Keywords
-<div class="btn-inline">
-    {% for keyword in site.skill_software_keywords %}
-    <button class="btn btn-outline" type="button">{{ keyword }}</button>
-    {% endfor %}
-</div>
+## 工作技能
 
-#### Mobile Developer Keywords
-<div class="btn-inline">
-    {% for keyword in site.skill_mobile_app_keywords %}
-    <button class="btn btn-outline" type="button">{{ keyword }}</button>
-    {% endfor %}
-</div>
+```
+1. 熟悉RHEL/CentOS 服务器系统安装、管理与调优。了解通过kickstart安装服务器方法。
 
-#### Windows Developer Keywords
-<div class="btn-inline">
-    {% for keyword in site.skill_windows_keywords %}
-    <button class="btn btn-outline" type="button">{{ keyword }}</button>
-    {% endfor %}
-</div>
+2.1 熟练掌握NFS共享存储。
+2.2 熟悉MooseFS网络文件系统，独立翻译mfs2.0版本及以上《安装指南》及《用户手册》。
+2.3 了解Fastdfs分布式文件存储系统。
+
+3.1 熟练使用shell脚本。
+3.2 熟悉awk，sed命令，能快速有效的进行文本分析。
+3.3 会使用python写一些简单的东西。
+
+4. 熟悉mysql数据库基础应用。熟练掌握mysql主从同步配置与管理。
+
+5.1 熟悉nginx webserve、反向代理、负载均衡功能。能进行部分参数调优。
+5.2 熟悉LVS的NAT与DR模式。了解TUN模式。
+5.3 熟悉keepalived实现高可用。了解ucarp。
+
+6.1 熟悉zabbix的软件安装配置及自定义监控与报警。
+6.2 熟悉hudson/jenkins，能执行自动化部署。
+
+7. 熟悉IBM x3650 M2系服务器RAID配置。
+
+8. 了解docker基础,翻译docker官网文档, 做过一些简单的docker应用
+
+9. 熟悉亚马逊aws服务器。
+```
+
+## 项目经验
+
+### 2013/10-2016/2成都征游科技有限公司
+
+```
+1. 管理公司网络环境。
+2. 公司业务部署在AWS上，系统采用CENTOS 6.6系统， JAVA环境。主要工作即部署游戏后台，调整环境参数，保证服务器正常运行。并完成游戏更新。
+3. 业务采用MYSQL数据库。完成脚本对mysql每日进行增量备份，每周更新进行完全备份。完成MYSQL主从同步，保证开发数据实时性准确性。
+4. 使用NGINX管理公司网站。使用NGINX反代及upstream功能管理后台服务器。
+4. 熟悉CENTOS6系统，编写SHELL脚本协助ZABBIX进行系统监控及报警，以及完成定时任务。
+5. 研习使用keepalived与NFS/MOOSEFS网络文件系统，模拟故障，实现高可用。
+```
+
+
+### 2012.07 - 2013.07 广州新科佳都科技有限公司
+
+```
+1.	广州地铁6号线自动售检票项目：
+2.	闸机设备现场安装督导，网络环境搭建配置，闸机设备调试
+3.	闸机xpe系统配置优化
+4.	软件环境搭建、软件升级部署、测试
+5.	广州地铁4号线改造自动售检票项目：
+6.	闸机xpe系统开发、配置
+```
+
+### 2011.08 - 2012.07 广州学而思教育科技有限公司
+
+```
+1、负责Linux系统日常运行情况的监控与突发事件的处理。
+2、前台、后台、教师业务系统的更新测试，功能评估，bug反馈。撰写问题文档与工作报告。
+3、客户端ICS软件的功能测试，bug反馈等，并对软件功能提出设计建议。编写问题文档与工作总结报告。
+4、负责公司电脑设备及外设的日常运行。
+5、服务中心前台同事的电脑知识与业务知识培训。
+```
