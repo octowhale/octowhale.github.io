@@ -27,6 +27,10 @@ email: uyinn28@gmail.com
 # ---------------- #
 navs:
   -
+    href: http://tangx.in
+    label: 源站
+
+  -
     href: /
     label: 首页
 
