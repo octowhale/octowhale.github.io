@@ -38,12 +38,15 @@ print type(s_d)
 ```
 
 然而差别在于：
+
 + 引号差异： json 中，如果 key 和 value 是字符串，则必须使用双引号； 而 python 字典中，可以是单引号或双引号。
 + key 差异： json 中， key 只能是字符串； 而 python 字典中， key 可以是字符串或数字。
 + value 差异（关键字）： json 中，使用的关键字使用的是小写字符 `(ex, false, true, null)`；而 python 的关键是为 `( True, False, None )`
 
 共同之处在于：
-字典支持的 value 类型， json不一定都支持。 但是 json 和 dict 对 value 的类型有
+
+字典支持的 value 类型， json不一定都支持。 但是 json 和 dict 对 value 的类型有:
+
 + 字符串 string
 + 数字 number
 + 字典 dict
