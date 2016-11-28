@@ -6,6 +6,8 @@ description: "在 python 中使用 matplatlib 画图，并格式化坐标轴时�
 keywords: python, 画图, 格式化
 ---
 
+# python matplatlib 格式化坐标轴时间 datetime
+
 使用 `matplatlib.pyploy` 可以非常方便的将**数组**转换成时间。但是，如果是时间 `datetime.datetime()` 作为坐标轴，如果不对时间进行优化，将会显得非常紧凑。
 
 对坐标轴时间进行优化，用到的库为 `matplatlib.dates`。主要代码如下
@@ -118,4 +120,4 @@ plt.
 ![figure_1.png](/images/post/2016/2016-11-17-python-json-usage-01.png)
 
 ## github 代码托管
-https://github.com/octowhale/python/blob/master/python_example/python_matplotlib_xaxis_datetime_format.py
+[matplot 格式化坐标轴时间表示](https://github.com/octowhale/python/blob/master/python_example/python_matplotlib_xaxis_datetime_format.py)
