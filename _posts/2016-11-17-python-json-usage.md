@@ -91,7 +91,7 @@ if __name__ == '__main__':
 # None
 ```
 
-![json.png](/images/post/2016-11-17-python-json-usage-01.png)
+![json.png](/images/post/2016/2016-11-17-python-json-usage-01.png)
 
 从上面代码中的结果与图片对应部分我们可以看到
 
