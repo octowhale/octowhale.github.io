@@ -117,7 +117,8 @@ plt.
 > 注意： `fig.autofmt_xdate()` 必须用在**填充数据**之后
 如果不使用 `fig.autofmt_xdate()` 那么坐标轴显示标志会水平与坐标轴。如果使用了，则会斜靠在坐标轴上，这样就可以显示更多的长标志
 
-![figure_1.png](/images/post/2016/2016-11-17-python-json-usage-01.png)
+![figure_1.png](/images/post/2016/2016-11-28-python_matplotlib_xaxis_datetime_format-01.png)
 
 ## github 代码托管
+[matplatlib API demon](http://matplotlib.org/examples/api/date_demo.html)
 [matplot 格式化坐标轴时间表示](https://github.com/octowhale/python/blob/master/python_example/python_matplotlib_xaxis_datetime_format.py)
