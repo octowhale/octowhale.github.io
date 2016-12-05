@@ -12,37 +12,39 @@ permalink: /about/
 
 ## 联系
 
-* GitHub：[@octowhale](https://github.com/octowhale)
-* 个人网站：[tangx.in](http://tangx.in) & [uyinn.com](http://www.uyinn.com)
++ GitHub：[@octowhale](https://github.com/octowhale)
++ 个人网站：[tangx.in](http://tangx.in) & [uyinn.com](http://www.uyinn.com)
++ 文档翻译：[translate](/wiki/)
 
 
 ## 工作技能
 
 ```
-1. 熟悉RHEL/CentOS 服务器系统安装、管理与调优。了解通过kickstart安装服务器方法。
+1. 熟悉 RHEL/CentOS 6/7 服务器系统安装、管理与调优。
+2. 熟悉 通过 kickstart 安装服务器方法。
 
-2.1 熟练掌握NFS共享存储。
-2.2 熟悉MooseFS网络文件系统，独立翻译mfs2.0版本及以上《安装指南》及《用户手册》。
-2.3 了解Fastdfs分布式文件存储系统。
+2.1 熟练掌握 NFS 共享存储。
+2.2 熟悉 MooseFS 网络文件系统，独立翻译 mfs2.0 版本及以上《安装指南》及《用户手册》。
+2.3 了解 Fastdfs 分布式文件存储系统。
 
-3.1 熟练使用shell脚本。
-3.2 熟悉awk，sed命令，能快速有效的进行文本分析。
-3.3 会使用python写一些简单的东西。
+3.1 熟练使用 shell 脚本。
+3.2 熟悉 awk，sed 命令，能快速有效的进行文本分析。
+3.3 会用 python 进行数据分析和编写命令行工具。
 
-4. 熟悉mysql数据库基础应用。熟练掌握mysql主从同步配置与管理。
+4. 熟悉 mysql 数据库基础应用。熟练掌握 mysql 主从同步配置与管理。
 
-5.1 熟悉nginx webserve、反向代理、负载均衡功能。能进行部分参数调优。
-5.2 熟悉LVS的NAT与DR模式。了解TUN模式。
-5.3 熟悉keepalived实现高可用。了解ucarp。
+5.1 熟悉 nginx webserve、反向代理、负载均衡功能。能进行部分参数调优。
+5.2 熟悉 LVS 的 NAT 与 DR 模式。了解 TUN 模式。
+5.3 熟悉 keepalived 实现高可用。了解 ucarp 。
 
-6.1 熟悉zabbix的软件安装配置及自定义监控与报警。
-6.2 熟悉hudson/jenkins，能执行自动化部署。
+6.1 熟悉 zabbix 的软件安装配置及自定义监控与报警。
+6.2 熟悉 hudson/jenkins ，能执行自动化部署。
 
-7. 熟悉IBM x3650 M2系服务器RAID配置。
+7. 熟悉 IBM x3650 M2 系服务器 RAID 配置。
 
-8. 了解docker基础,翻译docker官网文档, 做过一些简单的docker应用
+8. 了解 docker， 翻译 docker 官网文档, 做过一些简单的 docker 应用
 
-9. 熟悉亚马逊aws服务器。
+9. 熟悉亚马逊 aws 服务器。
 ```
 
 ## 项目经验
@@ -51,9 +53,9 @@ permalink: /about/
 
 ```
 1. 管理公司网络环境。
-2. 公司业务部署在AWS上，系统采用CENTOS 6.6系统， JAVA环境。主要工作即部署游戏后台，调整环境参数，保证服务器正常运行。并完成游戏更新。
-3. 业务采用MYSQL数据库。完成脚本对mysql每日进行增量备份，每周更新进行完全备份。完成MYSQL主从同步，保证开发数据实时性准确性。
-4. 使用NGINX管理公司网站。使用NGINX反代及upstream功能管理后台服务器。
+2. 公司业务部署在 AWS 上，系统采用 CENTOS 6.6 系统， JAVA 环境。主要工作即部署游戏后台，调整环境参数，保证服务器正常运行。并完成游戏更新。
+3. 业务采用 MYSQL 数据库。完成脚本对 mysql 每日进行增量备份，每周更新进行完全备份。完成 MYSQL 主从同步，保证开发数据实时性准确性。
+4. 使用 NGINX 管理公司网站。使用 NGINX 反代及 upstream功能管理后台服务器。
 4. 熟悉CENTOS6系统，编写SHELL脚本协助ZABBIX进行系统监控及报警，以及完成定时任务。
 5. 研习使用keepalived与NFS/MOOSEFS网络文件系统，模拟故障，实现高可用。
 ```
@@ -62,12 +64,12 @@ permalink: /about/
 ### 2012.07 - 2013.07 广州新科佳都科技有限公司
 
 ```
-1.	广州地铁6号线自动售检票项目：
-2.	闸机设备现场安装督导，网络环境搭建配置，闸机设备调试
-3.	闸机xpe系统配置优化
-4.	软件环境搭建、软件升级部署、测试
-5.	广州地铁4号线改造自动售检票项目：
-6.	闸机xpe系统开发、配置
+1. 广州地铁6号线自动售检票项目：
+2. 闸机设备现场安装督导，网络环境搭建配置，闸机设备调试
+3. 闸机xpe系统配置优化
+4. 软件环境搭建、软件升级部署、测试
+5. 广州地铁4号线改造自动售检票项目：
+6. 闸机xpe系统开发、配置
 ```
 
 ### 2011.08 - 2012.07 广州学而思教育科技有限公司
