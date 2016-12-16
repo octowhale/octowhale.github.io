@@ -49,6 +49,8 @@ Options:
                         
   -l SUBSET, --limit=SUBSET
                         further limit selected hosts to an additional pattern
+                        指定 host 执行命令
+                        
   --list-hosts          outputs a list of matching hosts; does not execute
                         anything else
                         打印必配的主机列表；不会执行其他任何操作
@@ -215,5 +217,28 @@ hosts (4):
 192.168.56.22
 vbox10
 testserver
+
+```
+
+### `--limit `
+
+```bash
+
+$ cat ./ansible_install_centos68.retry
+vbox10
+
+#
+
+$ ansible-playbook ansible_install_centos68.yml --limit @./ansible_install_centos68.retry
+[DEPRECATION WARNING]: Instead of sudo/sudo_user, use become/become_user and make sure become_method is 'sudo' (default).
+This feature will be 
+removed in a future release. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+
+PLAY [ansible installation on CentOS68 via yum] ********************************
+
+...
+
+PLAY RECAP *********************************************************************
+vbox10                     : ok=4    changed=1    unreachable=0    failed=0   
 
 ```
