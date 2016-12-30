@@ -13,7 +13,7 @@ keywords: playbook, tips
 不能在没有变更系统状态的条件下触发 notify 。
 即，此处不能省略 `template` 模块
 
-```yaml
+```
 # tasks
 - name: Configure ntp file
   template: src=ntp.conf.j2 dest=/etc/ntp.conf
@@ -25,7 +25,7 @@ keywords: playbook, tips
 
 通过 `vars_files` 指定变量文件位置
 
-```yaml
+```
 - name: install MySQL57
   hosts: mysql-server
   remote_user: root
@@ -41,8 +41,9 @@ keywords: playbook, tips
 
 在编写 playbook 的时候，遇到不知道或不清楚的模块时。可以使用 `command: sys_command_bin args`。
 如果 ansible 有合适的模块会在 play 运行的输出中提示。例如：
-+ `[WARNING]: Consider using unarchive module rather than running tar`
-+ `[WARNING]: Consider using get_url or uri module rather than running wget`
+
++ [WARNING]: Consider using unarchive module rather than running tar
++ [WARNING]: Consider using get_url or uri module rather than running wget
 
 ```
 - name: Unarchive gogs package {{ gogs_package_version }}
@@ -64,7 +65,7 @@ keywords: playbook, tips
 
 `chdir`
 
-```yaml
+```
 
 - name: Change dir and run command
   command: chdir /path/to/dir ls -al
@@ -76,7 +77,7 @@ keywords: playbook, tips
 两个变量链接的时候，需要使用双引号括起来。
 部分变量（如 url）在使用的时候，可能需要使用双引号括起来。
 
-```yaml
+```
 - name: Download gogs package {{ gogs_package_version }}
   # command: wget -c http://7d9nal.com2.z0.glb.qiniucdn.com/gogs_v0.9.113_linux_amd64.tar.gz -O /opt/gogs_v0.9.113_linux_amd64.tar.gz
   # [WARNING]: Consider using get_url or uri module rather than running wget
@@ -93,7 +94,7 @@ keywords: playbook, tips
 ansible 报错：`one of the following is required: name,list`。 
 使用了单引号或双赢好，但是依旧报错。
 
-```yaml
+```
 
 # - name: Install mysql-community-server mysql-community-devel of mysql 
   # yum: name= {{ item }} state=installed
