@@ -1,3 +1,11 @@
+---
+layout: wiki
+title: "ansible gather fact"
+categories: automatic
+description: "ansible 获取主机变量列表"
+keywords: ansible
+---
+
 # ansible gather fact
 
 使用 setup 和 gather_facts 获取主机变量
