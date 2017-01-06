@@ -1,12 +1,12 @@
 ---
 layout: post
-title: ansible playbook 书写记要
+title: ansible playbook 注意事项 01
 categories: [ansible]
 description: "在编写 playbook 时的一些小细节"
 keywords: playbook, tips
 ---
 
-# ansible playbook 书写记要
+# ansible playbook 注意事项 01
 
 ## notify 触发条件
 
