@@ -1,6 +1,6 @@
 ---
 layout: post
-title: ansible playbook 注意事项 02
+title: "ansible playbook 注意事项 02"
 categories: [ansible]
 description: "在编写 playbook 时的一些小细节"
 keywords: playbook, tips
@@ -9,7 +9,7 @@ keywords: playbook, tips
 # ansible playbook 注意事项 02
 
 
-参考 [defaults/main.yml]
+参考 [defaults/main.yml](defaults/main.yml)
 
 ```yaml
 # 关于缩进
@@ -30,7 +30,7 @@ keywords: playbook, tips
 
 以下三种写法等价
 
-参考 [main.yml]
+参考 [main.yml](main.yml)
 
 ```yaml
 # 01 单行写法
@@ -55,7 +55,7 @@ file:
 
 ## 变量引用
 
-参考 [main.yml]
+参考 [main.yml](main.yml)
 
 ```yaml
 # 使用引号将变量括起来. ansible 2.2.0.0
@@ -105,7 +105,7 @@ become_user: BECOME_USER
 
 ## jekyll2 语法
 
-[templates/site.j2]
+[templates/site.j2](templates/site.j2)
 
 ```jinja
 

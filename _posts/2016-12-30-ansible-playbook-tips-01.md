@@ -1,6 +1,6 @@
 ---
 layout: post
-title: ansible playbook 注意事项 01
+title: "ansible playbook 注意事项 01"
 categories: [ansible]
 description: "在编写 playbook 时的一些小细节"
 keywords: playbook, tips
