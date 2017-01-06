@@ -108,4 +108,5 @@ become_user: BECOME_USER
 [templates/site.j2](templates/site.j2)
 
 [ j2 部分](https://github.com/octowhale/ansible_notebook/tree/master/playbook/nginx_installation_centos6.8) 由于与 github pages 冲突，不能正常转换。 
-![2017-01-16-ansible-playbook-tips-02.png](/image/post/2017/2017-01-16-ansible-playbook-tips-02.png)
+
+![2017-01-06-ansible-playbook-tips-02.png](/images/post/2017/2017-01-06-ansible-playbook-tips-02.png)
