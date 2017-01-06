@@ -11,7 +11,7 @@ keywords: playbook, tips
 
 参考 [defaults/main.yml](defaults/main.yml)
 
-```yaml
+```bash
 # 关于缩进
 # 在 yaml 语法中, `-` 表示指代的是一个列表格式, 在字典的 key 缩进的时候不能算在内.
 # 
@@ -32,7 +32,7 @@ keywords: playbook, tips
 
 参考 [main.yml](main.yml)
 
-```yaml
+```bash
 # 01 单行写法
 file: path=/etc/nginx/{{ item }} state=directory owner=root group=root mode=0755
 
@@ -57,7 +57,7 @@ file:
 
 参考 [main.yml](main.yml)
 
-```yaml
+```bash
 # 使用引号将变量括起来. ansible 2.2.0.0
 vars:
   redhat_pkg:
@@ -76,7 +76,7 @@ tasks:
 
 ## 条件判断
 
-```yaml
+```bash
 # 使用 when 进行条件判断
 # 使用 and / or 进行条件连接
 when: ansible_os_family == "RedHat" and ansible_distribution_major_version == "6"
@@ -86,7 +86,7 @@ when: ansible_os_family == "RedHat" and ansible_distribution_major_version == "6
 
 [become.rst](https://github.com/ansible/ansible/blob/0f4ca877ac91aa4cf56103f967afec65cca629e1/docsite/rst/become.rst)
 
-```yaml
+```bash
 
 # 01 使用 root 用户连接
 remote_user: root
@@ -107,7 +107,7 @@ become_user: BECOME_USER
 
 [templates/site.j2](templates/site.j2)
 
-```jinja
+```bash
 
 server {
 
