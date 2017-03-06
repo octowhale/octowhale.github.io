@@ -19,6 +19,8 @@ permalink: /wiki/
 
 > 记多少命令和快捷键会让脑袋爆炸呢？
 
+[chrome 离线安装包](https://www.google.com/chrome/browser/desktop/index.html/?system=true&standalone=1)
+
 <ul class="listing">
 {% for wiki in site.wiki %}
 {% if wiki.title != "Wiki Template" %}
