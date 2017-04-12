@@ -36,6 +36,7 @@ ansible -i /root/ansible_copy/hosts backup -m synchronize -a 'mode=pull src=/tmp
 
 ```
 
+## playbook 更多高级选项 
 
 ```yaml
 
@@ -164,7 +165,8 @@ ansible -i /root/ansible_copy/hosts backup -m synchronize -a 'mode=pull src=/tmp
 ```
 
 
-> **Notes**
+## Notes
+
 > rsync must be installed on both the local and remote host.
 > For the synchronize module, the “local host” is the host the synchronize task originates on, and the “destination host” is the host synchronize is connecting to.
 > The “local host” can be changed to a different host by using delegate_to. This enables copying between two remote hosts or entirely on one remote machine.
