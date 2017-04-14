@@ -36,6 +36,43 @@ ansible -i /root/ansible_copy/hosts backup -m synchronize -a 'mode=pull src=/tmp
 
 ```
 
+## delegate_to 授权
+
+需要注意的是，使用 `delegate_to` 授权机进行 synchronize 。需要保证授权机能密钥访问远程机。
+因为 delegate_to 时，使用的帐户权限是授权机的，而非 ansible host 的。
+
+![ansible_delegate_synchronzie.png](/images/post/2017/2017-04-12-ansible_delegate_synchronize.png)
+
+```yaml
+# Synchronization of src on delegate host to dest on the current inventory host.
+# 同步『授权机(delegate host)』的 src 目录到远程机器
+# 注：需要指定 rsync_opts。
+# 参考 https://github.com/ansible/ansible/issues/7250
+- synchronize:
+    src: /first/absolute/path
+    dest: /second/absolute/path
+    rsync_opts: '-e "ssh -p {{ ansible_ssh_port }} -i /home/delegate_host_user/.ssh/id_rsa"'
+  delegate_to: delegate.host
+```
+
+```yaml
+
+---
+
+# synchronize 
+
+- name: sync local folder to remote host
+  hosts: server01
+  tasks:
+    - name: push local folder to remote host
+      synchronize:
+        src: /tmp/sync_folder/
+        dest: /tmp/sync_folder/
+        rsync_opts: '-e "ssh -p {{ ansible_ssh_port }} -i /home/server02/.ssh/id_rsa"'
+      delegate_to: server02
+      
+```
+
 ## playbook 更多高级选项 
 
 ```yaml
@@ -116,17 +153,28 @@ ansible -i /root/ansible_copy/hosts backup -m synchronize -a 'mode=pull src=/tmp
     dest: /some/absolute/path
 
 # Synchronization of src on delegate host to dest on the current inventory host.
-# 同步
+# 同步『授权机(delegate host)』的 src 目录到远程机器
+# 注：需要指定 rsync_opts。
+# 参考 https://github.com/ansible/ansible/issues/7250
 - synchronize:
     src: /first/absolute/path
     dest: /second/absolute/path
+    rsync_opts: '-e "ssh -p {{ ansible_ssh_port }} -i /home/delegate_host_user/.ssh/id_rsa"'
   delegate_to: delegate.host
 
+
 # Synchronize two directories on one remote host.
+# 同步『授权机器』上的两个目录同步
+# 实际上，需要授权本机访问本机
 - synchronize:
     src: /first/absolute/path
     dest: /second/absolute/path
   delegate_to: "{{ inventory_hostname }}"
+  
+# 因此不如使用 shell 模块
+# 参考 http://www.adelson.co/ansible-sync-delegate.html
+- shell: rsync --arHz /first/absolute/path /second/absolute/path
+
 
 # Synchronize and delete files in dest on the remote host that are not found in src of localhost.
 # 同步本地 src 到目标机 dest，并删除本地 src 中没有的文件
@@ -170,13 +218,13 @@ ansible -i /root/ansible_copy/hosts backup -m synchronize -a 'mode=pull src=/tmp
 + rsync 必须状态本机与目标机.
 + For the synchronize module, the “local host” is 同步的发起方, and the “destination host” is 同步的接收方.
 + 可以使用 `delegate_to` 改变 “local host” . 该功能可以实现在两台远程机器上同步，或者在一台远程机器上执行两个目录的同步。
-+ The user and permissions for the synchronize src are those of the user running the Ansible task on the local host (or the remote_user for a delegate_to host when delegate_to is used).
-+ The user and permissions for the synchronize dest are those of the remote_user on the destination host or the become_user if become=yes is active.
++ synchronize src 所使用的 `用户` 和 `权限` 是在本机发起 Ansible 任务的用户的权限（或者是使用 `delegate_to` 时，授权机上的 `remote_user`）
++ synchronize dest 所使用的 `用户` 和 `权限` 是目标机上的 remote_user 的用户权限；或者为使用 `become=yes` 时的 become_user 的权限。
 + In 2.0.0.0 a bug in the synchronize module made become occur on the “local host”. This was fixed in 2.0.1.
-+ Currently, synchronize is limited to elevating permissions via passwordless sudo. This is because rsync itself is connecting to the remote machine and rsync doesn’t give us a way to pass sudo credentials in.
-+ Currently there are only a few connection types which support synchronize (ssh, paramiko, local, and docker) because a sync strategy has been determined for those connection types. Note that the connection for these must not need a password as rsync itself is making the connection and rsync does not provide us a way to pass a password to the connection.
-+ Expect that dest=~/x will be ~<remote_user>/x even if using sudo.
++ 目前， synchronize 被限制使用无密码 sudo 提权。这是因为通过 rsync 连接到远程机器，且 rsync 并未提供任何使用 sudo 方式的接口。
++ 同步策略决定了目前只有少部分连接 (ssh, paramiko, local, and docker) 方式支持 synchronize。 Note that the connection for these must not need a password as rsync itself is making the connection and rsync does not provide us a way to pass a password to the connection. 
++ Expect that `dest=~/x` will be `~<remote_user>/x` even if using sudo.
 + Inspect the verbose output to validate the destination user/host/path are what was expected.
-+ To exclude files and directories from being synchronized, you may add .rsync-filter files to the source directory.
++ To exclude files and directories from being synchronized, you may add `.rsync-filter` files to the source directory.
 + rsync daemon must be up and running with correct permission when using rsync protocol in source or destination path.
-+ The synchronize module forces –delay-updates to avoid leaving a destination in a broken in-between state if the underlying rsync process encounters an error. Those synchronizing large numbers of files that are willing to trade safety for performance should call rsync directly.
++ The synchronize module forces `--delay-updates` to avoid leaving a destination in a broken in-between state if the underlying rsync process encounters an error. Those synchronizing large numbers of files that are willing to trade safety for performance should call rsync directly.
