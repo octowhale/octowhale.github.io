@@ -10,26 +10,6 @@ keywords: linux
 
 # 为 linux系统软件配置 socks 和 http 代理 
 
-
-## CENTOS 6 install privoxy
-
-> https://superuser.com/questions/452197/how-to-install-privoxy-on-centos-6
-
-```
-
-These commands are more easier and manageable
-
-wget http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
-rpm -Uvh epel-release-6-8.noarch.rpm
-yum install privoxy -y
-In future if you want to update
-
-yum update privoxy -y
-Ref: http://pkgs.org/centos-6/epel-x86_64/privoxy-3.0.21-3.el6.x86_64.rpm.html
-
-shareimprove this answer
-```
-
 ## use sslocal to setup a socks5 proxy
 
 
@@ -37,26 +17,49 @@ shareimprove this answer
 
 pip install shadowsocks
 
-sslocal -help
+sslocal --help
 
+```
+
+
+## CENTOS 6 install privoxy
+
+> https://superuser.com/questions/452197/how-to-install-privoxy-on-centos-6
+
+```bash
+
+# These commands are more easier and manageable
+
+wget http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
+rpm -Uvh epel-release-6-8.noarch.rpm
+yum install privoxy -y
+
+# In future if you want to update
+
+yum update privoxy -y
+#  Ref: http://pkgs.org/centos-6/epel-x86_64/privoxy-3.0.21-3.el6.x86_64.rpm.html
+
+# shareimprove this answer
 ```
 
 
 ## transfer protocol from socks to http via privoxy
 
 > https://wiki.archlinux.org/index.php/Shadowsocks_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)
+
 > https://blog.phpgao.com/privoxy-shadowsocks.html
 
 方法二：
 1.直接指定Chromium走socks代理似乎不能远程dns解析，这未必是用户的期望，可使用privoxy等软件转化socks代理为http代理。
 编辑privoxy配置文件（不要漏下1080后面的点)
 
-```
+```bash
 vi /etc/privoxy/config
 
 /etc/privoxy/config
 forward-socks5   /               127.0.0.1:1080 .
 listen-address  127.0.0.1:8118
+
 # 重启服务应用更改：
 # /etc/init.d/privoxy restart
 #2.假设转化后的http代理为127.0.0.1:8118，则在终端中启动：
