@@ -127,12 +127,15 @@ iptables -A INPUT -i eth1 -s 192.168.1.233 -m limit --limit 10/s -j ACCEPT
 
 
 > ip_tables: DNAT target: used from hooks POSTROUTING, but only usable from PREROUTING/OUTPUT
+>
 > ip_tables: SNAT target: used from hooks PREROUTING, but only usable from POSTROUTING
+>
 > ip_tables: MASQUERADE target: used from hooks PREROUTING, but only usable from POSTROUTING
-
+>
 > 使用 ` dmesg ` 可以查看配置错误信息
 
 注意： `-A POSTROUTING` 不能与 `-i ETH` 搭配使用，可以与 `-i, -d ,-s ` 搭配使用
+
 注意： `-A PREROUTING` 不能与 `-o ETH` 搭配使用，可以与 `-i, -d ,-s ` 搭配使用
 
 ### POSTROUTING
