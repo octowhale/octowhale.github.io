@@ -140,7 +140,7 @@ iptables -A INPUT -i eth1 -s 192.168.1.233 -m limit --limit 10/s -j ACCEPT
 
 ### POSTROUTING
 + 可以搭配 `-o ETH` , `-s|-d IP/MASK` 
-+ 可以搭配 ` -j SNAT 或 -j MASQUERADE `
++ 可以搭配 `-j SNAT` 或 `-j MASQUERADE`
 
 + 不能搭配 `-i ETH` 
 + 不能搭配 `-j DNAT`
