@@ -16,13 +16,60 @@ keywords: iptables
 2. 如果数据包就是进入本机的，它就会沿着图向下移动，到达INPUT链。数据包到了INPUT链后，任何进程都会收到它。本机上运行的程序可以发送数据包，这些数据包会经过OUTPUT链，然后到达POSTROUTING链输出。 
 3. 如果数据包是要转发出去的，且内核允许转发，数据包就会如图所示向右移动，经过FORWARD链，然后到达POSTROUTING链输出。
 
-http://pic002.cnblogs.com/images/2012/360373/2012081915413532.png
+
 ![2017-08-31-iptables-basic-theory.png](/images/post/2017/2017-08-31-iptables-basic-theory.png)
-## iptables 允许与拒绝
 
-iptables -t 表名 -A/-I 链名 -p 协议 --dport/--sport 端口 -s/-d IP/MASK  -i|-o 网卡 -j ACTION
+### 规则表
+1. filter表——三个链：INPUT、FORWARD、OUTPUT
+作用：过滤数据包  内核模块：iptables_filter.
+2. Nat表——三个链：PREROUTING、POSTROUTING、OUTPUT
+作用：用于网络地址转换（IP、端口） 内核模块：iptable_nat
+3. Mangle表——五个链：PREROUTING、POSTROUTING、INPUT、OUTPUT、FORWARD
+作用：修改数据包的服务类型、TTL、并且可以配置路由实现QOS内核模块：iptable_mangle(别看这个表这么麻烦，咱们设置策略时几乎都不会用到它)
+4. Raw表——两个链：OUTPUT、PREROUTING
+作用：决定数据包是否被状态跟踪机制处理  内核模块：iptable_raw
+(这个是REHL4没有的，不过不用怕，用的不多)
 
-iptables -t TABLE -A|-I CHAIN -p PROTOCOL --dport|--sport PORT -s|-d IP/MASK -i|-o ETH -j ACTION
+### 规则链
+
+1. INPUT——进来的数据包应用此规则链中的策略
+2. OUTPUT——外出的数据包应用此规则链中的策略
+3. FORWARD——转发数据包时应用此规则链中的策略
+4. PREROUTING——对数据包作路由选择前应用此链中的规则
+（记住！所有的数据包进来的时侯都先由这个链处理）
+5. POSTROUTING——对数据包作路由选择后应用此链中的规则
+（所有的数据包出来的时侯都先由这个链处理）
+
+
+### 规则表之间的优先顺序
+
+`Raw——mangle——nat——filter`
+
+规则链之间的优先顺序（分三种情况）：
+
+**第一种情况：入站数据流向**
+
+从外界到达防火墙的数据包，先被PREROUTING规则链处理（是否修改数据包地址等），之后会进行路由选择（判断该数据包应该发往何处），如果数据包的目标主机是防火墙本机（比如说Internet用户访问防火墙主机中的web服务器的数据包），那么内核将其传给INPUT链进行处理（决定是否允许通过等），通过以后再交给系统上层的应用程序（比如Apache服务器）进行响应。
+
+**第二冲情况：转发数据流向**
+
+来自外界的数据包到达防火墙后，首先被PREROUTING规则链处理，之后会进行路由选择，如果数据包的目标地址是其它外部地址（比如局域网用户通过网关访问QQ站点的数据包），则内核将其传递给FORWARD链进行处理（是否转发或拦截），然后再交给POSTROUTING规则链（是否修改数据包的地址等）进行处理。
+
+**第三种情况：出站数据流向**
+防火墙本机向外部地址发送的数据包（比如在防火墙主机中测试公网DNS服务器时），首先被OUTPUT规则链处理，之后进行路由选择，然后传递给POSTROUTING规则链（是否修改数据包的地址等）进行处理。
+
+
+![2017-08-31-iptables-basic-theory.png](/images/post/2017/2017-08-31-iptables-basic-theory-tables.png)
+
+
+## iptables filter 规则命令
+
+`iptables -t 表名 -A/-I 链名 -p 协议 --dport/--sport 端口 -s/-d IP/MASK  -i|-o 网卡 -j ACTION`
+`iptables -t TABLE -A|-I CHAIN -p PROTOCOL --dport|--sport PORT -s|-d IP/MASK -i|-o ETH -j ACTION`
+
+![2017-08-31-iptables-basic-theory.png](/images/post/2017/2017-08-31-iptables-basic-command.jpg)
+![2017-08-31-iptables-basic-theory.png](/images/post/2017/2017-08-31-iptables-basic-paraments.jpg)
+
 
 ```bash
 
@@ -71,7 +118,7 @@ iptables -A INPUT -i eth1 -s 192.168.1.233 -m limit --limit 10/s -j ACCEPT
 ```
 
 
-## 端口转发
+## iptables nat 端口转发规则
 
 **通常内网到外网是pre，内网到内网是post** ，但是外还是内只是个相对概念，在一定条件下是可以转换的。
 落实到网卡上，对于每个网卡**数据流入的时候必然经过pre，数据流出必然经过post**。
