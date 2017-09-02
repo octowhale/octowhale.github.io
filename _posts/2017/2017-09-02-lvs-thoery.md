@@ -46,6 +46,7 @@ keywords: LVS
 `| SOURCE | *202.103.106.5:80* | DEST | 202.100.1.2:3456 |`
 
 ** 具体步骤如下 ** 
+
 | 步骤 | 源 | 地址 | 目标 | 地址 | 
 | -- | -- | -- | -- | -- | 
 | 客户访问 LB | SOURCE | 202.100.1.2:3456 | DEST | **202.103.106.5:80** | 
@@ -262,7 +263,7 @@ echo "2" >/proc/sys/net/ipv4/conf/all/arp_announce
 
 #### 参考文档
 
-http://www.linuxvirtualserver.org/zh/lvs1.html
-http://www.cnblogs.com/liwei0526vip/p/6370103.html
-http://blog.csdn.net/shudaqi2010/article/details/59065999
-http://www.361way.com/lvs-tun/5202.html
++ http://www.linuxvirtualserver.org/zh/lvs1.html
++ http://www.cnblogs.com/liwei0526vip/p/6370103.html
++ http://blog.csdn.net/shudaqi2010/article/details/59065999
++ http://www.361way.com/lvs-tun/5202.html
