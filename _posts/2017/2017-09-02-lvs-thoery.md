@@ -112,7 +112,7 @@ RS 服务器收到报文后，先将报文解封获得原来目标地址为VIP�
 
 ### NAT 模式配置
 
-LB 执行
+[LB 执行](/attachments/2017/lvs_nat_lb.sh)
 
 ```bash
 #! /bin/bash
@@ -155,7 +155,8 @@ $IPVSADM -a -t 192.168.233.207:80 -r 192.168.56.210:80 -m -w 10
 
 ```
 
-RS 执行
+
+[RS 执行](/attachments/2017/lvs_nat_rs.sh)
 
 ```bash
 #!/bin/bash
@@ -173,9 +174,11 @@ route add default $lb_intip
 
 ```
 
+
+
 ### DR 模式配置
 
-LB 执行脚本
+[LB 执行脚本](/attachments/2017/lvs_dr_lb.sh)
 
 ```bash
 #!/bin/bash
@@ -200,7 +203,8 @@ $ipv -a -t $vip:80 -r $rs1:80 -g -w 3
 
 ```
 
-RS 执行脚本
+
+[RS 执行脚本](/attachments/2017/lvs_dr_rs.sh)
 
 ```bash
 
