@@ -75,7 +75,7 @@ aria2c -c -x5 "URL"
 ### aria2 配置文件
 
 之前说了 aria2 可以作成一个 web 端的下载工具。
-[配置文件](/attachments/2017/aria2.conf)如下:
+[配置文件](/attachments/2017/aria2.conf) 如下:
 
 ```bash
 ## '#'开头为注释内容, 选项都有相应的注释说明, 根据需要修改 ##

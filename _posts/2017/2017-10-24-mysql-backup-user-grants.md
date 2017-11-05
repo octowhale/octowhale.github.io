@@ -8,7 +8,7 @@ keywords: mysql
 
 # MYSQL 导出用户权限脚本
 
-分享一个抄来的 mysql 备份权限的脚本。这个脚本最大的好处是通用，不用像之前那样备份 `mysql.user` 表而造成在不同 mysql 实例之间造成不必要的问题。
+分享一个抄来的 [mysql 备份权限的脚本](/attachments/2017/dump_grants.sh) 。这个脚本最大的好处是通用，不用像之前那样备份 `mysql.user` 表而造成在不同 mysql 实例之间造成不必要的问题。
 
 
 ```bash
