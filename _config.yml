@@ -86,13 +86,14 @@ repository: octowhale/octowhale.github.io
 comments_provider: gitalk
 # !!!重要!!! 请修改下面这些信息为你自己申请的
 # !!!Important!!! Please modify infos below to yours
+# !!!注意!!! gitment 和 gitalk 中的 repo
 # https://disqus.com
 disqus:
     username:
 # https://imsun.net/posts/gitment-introduction/
 gitment:
     owner: octowhale
-    repo: blog_comments
+    repo: octowhale.github.io
     oauth:
         client_id: 4688e20802279b78b427
         client_secret: 52f2c647d6c75fcc8991a2ff72cb70e4bdd1b6c5
