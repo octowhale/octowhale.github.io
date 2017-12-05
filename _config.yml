@@ -99,7 +99,7 @@ gitment:
 # https://github.com/gitalk/gitalk#install
 gitalk:
     owner: octowhale
-    repo: blog_comments
+    repo: octowhale.github.io
     clientID: 4688e20802279b78b427
     clientSecret: 52f2c647d6c75fcc8991a2ff72cb70e4bdd1b6c5
 # 在使用其它评论组件时可点击显示 Disqus
