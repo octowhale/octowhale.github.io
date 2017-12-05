@@ -83,7 +83,7 @@ repository: octowhale/octowhale.github.io
 #      Comments    #
 # ---------------- #
 # support provider: disqus, gitment, gitalk
-comments_provider: gitalk
+comments_provider: gitment
 # !!!重要!!! 请修改下面这些信息为你自己申请的
 # !!!Important!!! Please modify infos below to yours
 # https://disqus.com
@@ -92,10 +92,10 @@ disqus:
 # https://imsun.net/posts/gitment-introduction/
 gitment:
     owner: octowhale
-    repo: gitment-blog-comments
+    repo: gitalk-blog-comments
     oauth:
-        client_id: f2bee230254ff142bc01
-        client_secret: 7de55792d1ac57a7498b36352899f45d57250012
+        client_id: 4688e20802279b78b427
+        client_secret: bb6880c80f44120b40055056ad93a8e51cd4031d
 # https://github.com/gitalk/gitalk#install
 gitalk:
     owner: octowhale
