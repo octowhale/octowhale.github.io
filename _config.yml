@@ -2,10 +2,10 @@
 #   Main Configs   #
 # ---------------- #
 baseurl:
-url: 
+url: http://tangx.in
 date_format: "ordinal"
 title: aloha.Mr.Tang
-subtitle: "Mr.Tang"
+subtitle: "Pick it up, then write it down."
 description: "Pick it up, then write it down."
 keywords: 
 timezone: Asia/Shanghai
@@ -26,10 +26,6 @@ email: mr@tangx.in
 #    Navigation    #
 # ---------------- #
 navs:
-  -
-    href: http://tangx.in
-    label: 源站
-
   -
     href: /
     label: 首页
@@ -92,7 +88,7 @@ comments_provider: gitalk
 # !!!Important!!! Please modify infos below to yours
 # https://disqus.com
 disqus:
-    username: 
+    username:
 # https://imsun.net/posts/gitment-introduction/
 gitment:
     owner: octowhale
