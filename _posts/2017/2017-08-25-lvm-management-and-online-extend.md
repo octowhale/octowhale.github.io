@@ -1,9 +1,9 @@
 ---
 layout: post
 title: "LVM 磁盘管理与在线扩容"
-categories: [system]
+categories: [system, linux]
 description: LVM 管理
-keywords: LVM
+keywords: LVM, disk, fdisk
 ---
 
 # LVM 磁盘管理与在线扩容
@@ -284,4 +284,77 @@ Do you really want to remove active logical volume lv_data1? [y/n]: y
   Read ahead sectors     auto
   - currently set to     256
   Block device           253:2
+```
+
+## 记一次 lvm 在线扩容
+
+之前案例不同， 这次实在 Aliyun 上直接 **扩容原磁盘大小** ， 而非新加磁盘。 
+
+因此，核心点在于如何对 `物理卷` 扩容。
+
+> 需要注意的是： 物理卷扩容并[不需要和普通分区一样，先删除再重建](https://help.aliyun.com/document_detail/25452.html?spm=5176.2020520101.0.0.457c4df5f8vH9j)。 直接 `pvresize` 即可。
+
+### 命令总结
+
+```bash
+# pvresize /dev/vdb
+# lvextend -l +100%FREE /dev/mapper/docker-bootstrap
+# resize2fs /dev/mapper/docker-bootstrap
+```
+
+### 命令记录
+
+```bash
+
+[root@iZ2ze0ky5ovykfx08vvmsxZ ~]# df -h |grep boot
+/dev/mapper/docker-bootstrap   40G  2.2G   36G   6% /var/lib/docker
+
+
+[root@iZ2ze0ky5ovykfx08vvmsxZ ~]# pvresize --help
+  pvresize: Resize physical volume(s)
+
+pvresize
+	[--commandprofile ProfileName]
+	[-d|--debug]
+	[-h|-?|--help]
+	[--reportformat {basic|json}]
+	[--setphysicalvolumesize PhysicalVolumeSize[bBsSkKmMgGtTpPeE]
+	[-t|--test]
+	[-v|--verbose]
+	[--version]
+	PhysicalVolume [PhysicalVolume...]
+
+[root@iZ2ze0ky5ovykfx08vvmsxZ ~]# pvchange --help^C
+[root@iZ2ze0ky5ovykfx08vvmsxZ ~]# pvresize /dev/vdb
+  Physical volume "/dev/vdb" changed
+  1 physical volume(s) resized / 0 physical volume(s) not resized
+[root@iZ2ze0ky5ovykfx08vvmsxZ ~]# pvdisplay
+  --- Physical volume ---
+  PV Name               /dev/vdb
+  VG Name               docker
+  PV Size               300.00 GiB / not usable 3.00 MiB
+  Allocatable           yes
+  PE Size               4.00 MiB
+  Total PE              76799
+  Free PE               51204
+  Allocated PE          25595
+  PV UUID               Cqxbco-9dJ7-uOot-SxRm-gUft-aVM8-Dj2ilE
+
+[root@iZ2ze0ky5ovykfx08vvmsxZ ~]# lvextend -l ^C
+[root@iZ2ze0ky5ovykfx08vvmsxZ ~]# # lvextend -l +100%FREE /dev/mapper/docker-bootstrap
+[root@iZ2ze0ky5ovykfx08vvmsxZ ~]#
+
+[root@iZ2ze0ky5ovykfx08vvmsxZ ~]# # lvextend -l +100%FREE /dev/mapper/docker-bootstrap
+[root@iZ2ze0ky5ovykfx08vvmsxZ ~]# lvextend -l +100%FREE /dev/mapper/docker-bootstrap
+  Size of logical volume docker/bootstrap changed from 40.00 GiB (10239 extents) to 240.01 GiB (61443 extents).
+  Logical volume docker/bootstrap successfully resized.
+[root@iZ2ze0ky5ovykfx08vvmsxZ ~]# resize2fs /dev/mapper/docker-bootstrap
+resize2fs 1.42.9 (28-Dec-2013)
+Filesystem at /dev/mapper/docker-bootstrap is mounted on /var/lib/docker; on-line resizing required
+old_desc_blocks = 5, new_desc_blocks = 31
+The filesystem on /dev/mapper/docker-bootstrap is now 62917632 blocks long.
+
+
+[root@iZ2ze0ky5ovykfx08vvmsxZ ~]# df -h |grep /dev/mapper/docker-bootstrap
+/dev/mapper/docker-bootstrap  237G  2.2G  224G   1% /var/lib/docker
 ```
