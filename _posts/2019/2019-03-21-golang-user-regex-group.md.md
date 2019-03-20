@@ -11,6 +11,7 @@ keywords: golang
 与常用的语言正则不同， golang 使用 `$1` 表示 `regex group`。 而类似 `sed, python` 中常用的是 `\1`
 
 + golang [playgroud](https://play.golang.org/p/eBsJMyv-25z)
+
 ```golang
 
 package main
@@ -31,6 +32,7 @@ func main() {
 ```
 
 + python
+
 ```python
 import re
 name = re.sub(r'([A-Z])', r'.\1', "UserCreate")
