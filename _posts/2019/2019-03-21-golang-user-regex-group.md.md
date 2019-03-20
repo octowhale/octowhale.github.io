@@ -26,6 +26,8 @@ func main() {
 	fmt.Println(s) // .User.Create
 
 }
+
+// https://stackoverflow.com/questions/43586091/how-golang-replace-string-by-regex-group
 ```
 
 + python
