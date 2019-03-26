@@ -1,6 +1,6 @@
 ---
 layout: post
-title: golang-user-regex-group
+title: golang-use-regex-group
 categories: [golang]
 description: golang 正则表达式替换时使用 regex group
 keywords: golang
