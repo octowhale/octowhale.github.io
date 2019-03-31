@@ -17,7 +17,7 @@ keywords: docker, image
     + 善用 `cache`
     + 构建 `自己的基础镜像`
 
-2. 洁身自好
+2. 精简为美
     + 使用 `.dockerignore` 保持 `context` 干净
     + 容器镜像环境清理
         + 缓存清理
@@ -27,6 +27,7 @@ keywords: docker, image
 
 + `docker storage driver`: https://docs.docker.com/storage/storagedriver/
 + `dockerfile best practices`: https://docs.docker.com/develop/develop-images/dockerfile_best-practices/
++ `multi-stage`: https://docs.docker.com/develop/develop-images/multistage-build/
 
 ## 为什么要优化镜像
 
@@ -49,6 +50,7 @@ keywords: docker, image
 ## 举个例子 docker build
 
 + **Dockerfile v1**
+
 ```Dockerfile
 # v1
 FROM nginx:1.15-alpine
@@ -61,6 +63,7 @@ ENTRYPOINT [ "/bin/sh" ]
 ```
 
 + **Dockerfile v2**
+
 ```Dockerfile
 # v2
 FROM nginx:1.15-alpine
