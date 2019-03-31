@@ -1,5 +1,5 @@
 ---
-layout: 怎样去构建一个优质的Docker容器镜像
+layout: post
 title: 使用 Dockerfile 构建镜像注意事项
 categories: [docker]
 description: 使用Dockerfile构建优质镜像
