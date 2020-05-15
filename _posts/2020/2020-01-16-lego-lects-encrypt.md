@@ -20,6 +20,13 @@ keywords: tls
 
 cd $(dirname $0)
 
+which lego || {
+    lego_ver=v3.7.0
+    wget -c https://github.com/go-acme/lego/releases/download/${lego_ver}/lego_${lego_ver}_linux_amd64.tar.gz  -o lego.tar.gz
+    tar xf lego.tar.gz
+    cp -a lego /usr/local/bin/lego
+}
+
 DOMAIN="*.example.com"
 EMAIL="your@email.com"
 export ALICLOUD_ACCESS_KEY=LTAxxxxxx
