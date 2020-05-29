@@ -8,8 +8,9 @@ keywords: s3, harbor, docker
 
 # harbor使用 s3v4 兼容模式的对象存储数据
 
-`harbor v1.9.4` 测试通过
+`harbor v2.0.0` 测试通过
 
+### qingcloud qingstor
 
 ```yaml
 # The default data volume
@@ -46,4 +47,27 @@ storage_service:
     multipartcopymaxconcurrency: 100
     multipartcopythresholdsize: 33554432
     rootdirectory: /your/path/to/storage
+```
+
+### huawei obs
+
+```yaml
+# https://docs.docker.com/registry/storage-drivers/s3/
+storage_service:
+  s3:
+    accesskey: XXXXXXXXXX
+    secretkey: YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
+    region: cn-north-4
+    regionendpoint: https://obs.cn-north-4.myhuaweicloud.com
+    bucket: bucket_name
+    ## encrypt must be fasle , huawei obs does not support this
+    encrypt: false
+    # keyid: mykeyid
+    secure: true
+    v4auth: true
+    chunksize: 5242880
+    multipartcopychunksize: 33554432
+    multipartcopymaxconcurrency: 100
+    multipartcopythresholdsize: 33554432
+    rootdirectory: /registry/
 ```
