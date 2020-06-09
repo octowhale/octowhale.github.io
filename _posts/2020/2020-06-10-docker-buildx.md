@@ -26,7 +26,7 @@ keywords: keyword1, keyword2
 }
 
 
-``
+```
 
 1. 将 `buildx` 放到 `~/.docker/cli-plugins/` 目录下
 
