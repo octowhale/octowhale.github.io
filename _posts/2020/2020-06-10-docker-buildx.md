@@ -9,7 +9,7 @@ keywords: keyword1, keyword2
 
 # 使用 docker buildx 实现多平台编译
 
-`[docker registry api v2](https://docs.docker.com/registry/spec/api/)` 支持多 CPU 架构镜像.
+[`docker registry api v2`](https://docs.docker.com/registry/spec/api/) 支持多 CPU 架构镜像.
 
 同时  `harbor v2` 也实现了 `docker registry api v2` 的支持.
 
