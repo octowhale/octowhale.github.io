@@ -44,9 +44,6 @@ mkdir -p ~/.docker/cli-plugins
 wget -c https://github.com/docker/buildx/releases/download/${BUILDX_VERSION}/buildx-${BUILDX_VERSION}.linux-${ARCH} -O docker-buildx\
     && chmod +x docker-buildx   \
     && mv docker-buildx ~/.docker/cli-plugins/
-
-
-
 ```
 
 2. 安装 `quem` 到 `/usr/bin/qemu-$(uname -m)-static`
@@ -86,6 +83,7 @@ docker buildx bake -f docker-compose.yml
 ```
 
 + `docker-bake.hcl`
+
 ```hcl
 group "default" {
 	targets = ["alpine"]
