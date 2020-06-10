@@ -129,6 +129,33 @@ target "debian" {
     + [buildx bake hcl examples](https://github.com/docker/buildx/blob/master/README.md#file-definition)
 
 
+**buildx hcl 支持的变量值**
+
+```go
+type Target struct {
+	Name string `json:"-" hcl:"name,label"`
+
+	// Inherits is the only field that cannot be overridden with --set
+	Inherits []string `json:"inherits,omitempty" hcl:"inherits,optional"`
+
+	Context    *string           `json:"context,omitempty" hcl:"context,optional"`
+	Dockerfile *string           `json:"dockerfile,omitempty" hcl:"dockerfile,optional"`
+	Args       map[string]string `json:"args,omitempty" hcl:"args,optional"`
+	Labels     map[string]string `json:"labels,omitempty" hcl:"labels,optional"`
+	Tags       []string          `json:"tags,omitempty" hcl:"tags,optional"`
+	CacheFrom  []string          `json:"cache-from,omitempty"  hcl:"cache-from,optional"`
+	CacheTo    []string          `json:"cache-to,omitempty"  hcl:"cache-to,optional"`
+	Target     *string           `json:"target,omitempty" hcl:"target,optional"`
+	Secrets    []string          `json:"secret,omitempty" hcl:"secret,optional"`
+	SSH        []string          `json:"ssh,omitempty" hcl:"ssh,optional"`
+	Platforms  []string          `json:"platforms,omitempty" hcl:"platforms,optional"`
+	Outputs    []string          `json:"output,omitempty" hcl:"output,optional"`
+	Pull       *bool             `json:"pull,omitempty" hcl:"pull,optional"`
+	NoCache    *bool             `json:"no-cache,omitempty" hcl:"no-cache,optional"`
+	// IMPORTANT: if you add more fields here, do not forget to update newOverrides and README.
+}
+```
+
 ## 在 github action 上使用 buildx
 
 > https://github.com/marketplace/actions/customizable-docker-buildx
