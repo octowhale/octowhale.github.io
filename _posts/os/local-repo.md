@@ -1,4 +1,13 @@
-# linux 创建本地仓库
+---
+layout: post
+title: linux 创建本地源
+categories: [linux, yum, apt, repo]
+description: 创建 linux 本地源
+keywords: linux, os, apt, yum, mirrors
+---
+
+
+# linux 创建本地源
 
 ## ubuntu 创建 local repo
 
