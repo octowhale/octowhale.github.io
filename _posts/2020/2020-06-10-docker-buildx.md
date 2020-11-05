@@ -17,22 +17,19 @@ keywords: keyword1, keyword2
 
 当前 buildx 还是一个实验模式, 如需要支持, 需要进行如下配置
 
-1. `experimental` 监控模式
+1. `experimental` 开始尝鲜模式
 
 ```bash
 # vi ~/docker/daemon.json
 {
     "experimental": true
 }
-
-
 ```
 
 1. 将 `buildx` 放到 `~/.docker/cli-plugins/` 目录下
 
 ```bash
 # https://github.com/docker/buildx/blob/master/README.md#docker-ce
-
 
 BUILDX_VERSION=v0.4.1
 
@@ -73,9 +70,12 @@ wget -c https://github.com/multiarch/qemu-user-static/releases/download/${QEMU_V
 docker buildx create --use
 
 # 2. compile
-## way1
-docker buildx build --platform=linux/amd64,linux/arm64
-## way2
+## build 命令行方式
+### 注意， 命令行最后也有一个代表 context 的 . (逗点)
+docker buildx build --platform=linux/amd64,linux/arm64 .
+
+
+## bake 文件方式
 docker buildx bake # default hcl file: docker-bake.json, docker-bake.hcl , docker-compose.yaml
 docker buildx bake -f bake.hcl # -f alias to bake
 docker buildx bake -f docker-compose.yml
@@ -99,7 +99,6 @@ target "alpine" {
     ## pull base image always
     pull = true
 }
-
 
 target "debian" {
     context = "./debian-bake"
@@ -195,9 +194,6 @@ docker buildx create --user --name specified_name # specified name
 ## https://github.com/multiarch/qemu-user-static#getting-started
 
 # >> https://github.com/docker/buildx/issues/132#issuecomment-521759117
-
-
-
 ```
 
 
