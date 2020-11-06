@@ -33,14 +33,10 @@ layout: default
     {{ content }}
     </article>
 
-    <div class="推广">
-      如果觉得有帮助，<br>
-      请扫码关注笔者公众号, 获取更多推送 <br>
-      <img src="/assets/images/qrcode.jpg" /><br>
-
-      请笔者一杯咖啡☕️ <br>
-      <img src="/assets/images/weixin-treatme.jpg" />
+    <div>
+      {% include treatme.html %}
     </div>
+    
 
     <div class="share">
       {% include sns-share.html %}
