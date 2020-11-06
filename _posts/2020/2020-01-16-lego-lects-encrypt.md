@@ -27,23 +27,32 @@ which lego || {
     cp -a lego /usr/local/bin/lego
 }
 
-DOMAIN="*.example.com"
+DomainList="*.example.com,*.example.org"
 EMAIL="your@email.com"
 export ALICLOUD_ACCESS_KEY=LTAxxxxxx
 export ALICLOUD_SECRET_KEY=yyyyyyyyyyyyyyyyy
+
+Domains=""
+for domain in ${DOMAINs//,/ }
+do
+{
+    Domains="${Domains} --domain=${domain}"
+}
+done
+
 
 function run()
 {
 
     lego --email="${EMAIL}" \
-        --domains="${DOMAIN}" \
+        ${Domains} \
         --path=$(pwd) --dns alidns --accept-tos run
 }
 
 function renew()
 {
     lego --email="${EMAIL}" \
-        --domains="${DOMAIN}" \
+        ${Domains} \
         --path=$(pwd) --dns alidns --accept-tos renew
 }
 
