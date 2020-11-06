@@ -18,7 +18,7 @@ side_bar_repo_limit: 5
 author: Mr.Tangx
 # organization: 
 # organization_url: 
-github_username: octowhale
+github_username: tangx
 location: Chengdu, China
 email: mr@tangx.in
 
@@ -77,7 +77,7 @@ collections:
         output: true
         permalink: /wiki/:path/
 
-repository: octowhale/octowhale.github.io
+repository: tangx/tangx.github.io
 
 # ---------------- #
 #      Comments    #
@@ -92,15 +92,15 @@ disqus:
     username:
 # https://imsun.net/posts/gitment-introduction/
 gitment:
-    owner: octowhale
-    repo: octowhale.github.io
+    owner: tangx
+    repo: tangx.github.io
     oauth:
         client_id: 4688e20802279b78b427
         client_secret: 52f2c647d6c75fcc8991a2ff72cb70e4bdd1b6c5
 # https://github.com/gitalk/gitalk#install
 gitalk:
-    owner: octowhale
-    repo: octowhale.github.io
+    owner: tangx
+    repo: tangx.github.io
     clientID: 4688e20802279b78b427
     clientSecret: 52f2c647d6c75fcc8991a2ff72cb70e4bdd1b6c5
 # 在使用其它评论组件时可点击显示 Disqus
