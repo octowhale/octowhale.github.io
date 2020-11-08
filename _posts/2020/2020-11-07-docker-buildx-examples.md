@@ -25,7 +25,7 @@ keywords: docker, cpu, usage, example
 
 如笔者之前维护的 opencv 双架构的项目， 通过 *github action* 进行跨平台编译， 长达三四小时。而在本架构下只需要短短的10几分钟。
 
-![opencv-multi-arch-github-action.jpg](/images/2020/11/07/opencv-multi-arch-github-action.jpg)
+![opencv-multi-arch-github-action.jpg](/images/post/2020/11/07/opencv-multi-arch-github-action.jpg)
 
 因此， 在同架构下执行编译或其他工作的需求就特别迫切了。
 
@@ -90,7 +90,7 @@ tree
 docker buildx build --platform=linux/amd64,linux/arm64 .
 ```
 
-![remote-builder.jpg](/images/post/2020/11/07/remote-build.jpg)
+![remote-builder.jpg](/images/post/2020/11/07/remote-builder.jpg)
 
 3. 重新执行 `docker buildx` 命令。
 
@@ -120,10 +120,9 @@ docker buildx build --platform=linux/amd64,linux/arm64 --tag tangx/centos:8 --pu
 诸如 `docker.io` 这样国外官方镜像， 拉取速度就非常不理想了。
 
 
-```Dockerfile
-# Dockerfile
-FROM centos:8
-```
+### 使用镜像加速优化
+
+1. 新建配置文件 `buildkitd.toml` 
 
 ```toml
 # buildkitd.toml
@@ -131,33 +130,56 @@ FROM centos:8
   mirrors = ["wlzfs4t4.mirror.aliyuncs.com"]
 ```
 
+并创建本地 `builder`
+
 ```bash
 ### create builder with mirror
 docker buildx create --use --name localbuilder --platform=linux/amd64,linux/arm64 --config=buildkitd.toml
+```
 
+2. 新建 `Dockerfile`
+
+```Dockerfile
+# Dockerfile
+FROM centos:8
+```
+
+并构建镜像
+
+```
 ### build a image
 docker buildx build --platform=linux/amd64,linux/arm64 .
 ```
-![builder-with-mirror.png](png/builder-with-mirror.png)
 
+![builder-with-mirror.png](/images/post/2020/11/07/builder-with-mirror.png)
+
+结果如上图所示， 耗时约 14s 左右
+
+### 使用默认参数，不使用镜像优化
+
+1. 创建不使用镜像优化的 mirror， 并执行构建
 ```bash
 ### without mirror
-docker buildx create --use --name localbuilder --platform=linux/amd64,linux/arm64 
+docker buildx create --use --name localbuilder-no-mirror --platform=linux/amd64,linux/arm64 
 
 ### build a image
 docker buildx build --platform=linux/amd64,linux/arm64 .
 ```
-![builder-without-mirror.png](./png/builder-without-mirror.png)
 
-从图片中可以看到， 在没有 mirror 的情况下， 甚至出现了网络问题。
+![builder-without-mirror.png](/images/post/2020/11/07/builder-without-mirror.png)
+
+从图片中可以看到， 在没有 mirror 的情况下， 出现了网络问题。
 
 > 这是因为 builder 运行在容器类， 并没有使用宿主机的 `/etc/docker/daemon.json` 配置 (**假设宿主机已经配置了 mirror**), 即相当于国内**直连 `docker.io`** 拉去镜像。
 
 
 ## 0x03 Dockerfile 案例
 
+如果你实现阅读了 [Dockerfile `ARG` 使用及作用域的分析](https://tangx.in/2020/11/06/dockerfiles-args-scope/) ， 那么以下两个 `Dockerfile` 就很简单了。
+
 ### sync
 
+**唯一作用: 对镜像重命名**, 通过参数的方式实现了不通镜像的同步。
 
 ```Dockerfile
 ARG IMAGE
@@ -165,6 +187,9 @@ FROM ${IMAGE}
 ```
 
 ```bash
+image=tangx/alpine
+tag=3.12
+
 docker buildx build --platform=linux/amd64,linux/arm64 \
   --tag ${image}:${tag} \
   --file Dockerfile
@@ -174,11 +199,14 @@ docker buildx build --platform=linux/amd64,linux/arm64 \
 
 ### combine
 
+这里通过 **多阶** 构建中 `别名` 及 `${TARGETARCH}` 的方式， 将两个独立 tag 镜像合并成一个。
+例如 [`minio/minio`](https://hub.docker.com/r/minio/minio/tags) 的镜像。
+
 ```Dockerfile
 ARG TARGETARCH
 
-FROM arm64v8/alpine:3.12 as arm64
-FROM amd64/alpine:3.12 as amd64
+FROM example.com/alpine:3.12-arm64 as arm64
+FROM example.com/alpine:3.12-amd64 as amd64
 
 FROM ${TARGETARCH}
 
@@ -186,7 +214,7 @@ FROM ${TARGETARCH}
 
 ```bash
 docker buildx build --platform=linux/amd64,linux/arm64 \
-  --tag ${image}:${tag} \
+  --tag example.in/alpine:3.12 \
   --file Dockerfile
   --build-arg IMAGE=alpine:3.12 \
   .
