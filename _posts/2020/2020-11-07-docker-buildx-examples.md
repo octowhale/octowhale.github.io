@@ -158,6 +158,7 @@ docker buildx build --platform=linux/amd64,linux/arm64 .
 ### 使用默认参数，不使用镜像优化
 
 1. 创建不使用镜像优化的 mirror， 并执行构建
+
 ```bash
 ### without mirror
 docker buildx create --use --name localbuilder-no-mirror --platform=linux/amd64,linux/arm64 
