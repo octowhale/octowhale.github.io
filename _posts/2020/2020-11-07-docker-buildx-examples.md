@@ -204,7 +204,6 @@ docker buildx build --platform=linux/amd64,linux/arm64 \
 例如 [`minio/minio`](https://hub.docker.com/r/minio/minio/tags) 的镜像。
 
 ```Dockerfile
-ARG TARGETARCH
 
 FROM example.com/alpine:3.12-arm64 as arm64
 FROM example.com/alpine:3.12-amd64 as amd64
@@ -212,6 +211,11 @@ FROM example.com/alpine:3.12-amd64 as amd64
 FROM ${TARGETARCH}
 
 ```
+
+> 注意， 
+>> 1. `TARGETARCH` 在 `FROM` 中使用不需要预先声明 `ARG TARGETARCH` 。 
+>> 2. `TARGETARCH` 在 body 中使用必须预先声明 `ARG TARGETARCH` 。 
+
 
 ```bash
 docker buildx build --platform=linux/amd64,linux/arm64 \
