@@ -22,6 +22,8 @@ keywords: keyword1, keyword2
 
 本文有大量代码和配置， demo 文件已经放在 Github: https://github.com/tangx/kusutomize-usage-tips-demo
 
+更多 API 细节， 参考官方文档: https://kubectl.docs.kubernetes.io/references/kustomize/
+
 ## 准备
 
 本文实践基于 `kubectl v1.19.3` 
