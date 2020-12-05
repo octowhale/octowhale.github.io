@@ -20,9 +20,9 @@ keywords: keyword1, keyword2
 
 个人觉得， **使用 kustomize 替换在使用和管理上，比直接使用 helm 参数更为清晰** 。
 
-本文有大量代码和配置， demo 文件已经放在 Github: https://github.com/tangx/kusutomize-usage-tips-demo
+本文有大量代码和配置， demo 文件已经放在 Github: [tangx/kusutomize-usage-tips-demo](https://github.com/tangx/kusutomize-usage-tips-demo)
 
-更多 API 细节， 参考官方文档: https://kubectl.docs.kubernetes.io/references/kustomize/
+更多 API 细节， 参考官方文档: [kustomize API](https://kubectl.docs.kubernetes.io/references/kustomize/)
 
 ## 准备
 
