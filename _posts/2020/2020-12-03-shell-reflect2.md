@@ -138,10 +138,20 @@ curl -X POST http://192.168.233.3:8082/v0/cmd -d '{
 
 ## 0x04 结论
 
-在使用了 **google distroless 镜像** 之后， 在一定程度上阻止了服务漏洞带来的 **常见 shell 反弹攻击** 。 尤其是在类似 golang 这类编译型的语言， 运行环境需求相对简单。
+在使用了 **google distroless 镜像** 之后， 在一定程度上阻止了服务漏洞带来的 **常见 shell 反弹攻击** 。 尤其是在类似 golang 这类编译型的语言， 运行环境需求相对简单。 
 
-同时， 也带来了另外一个问题 **研发团队需要更好的实现单元测试** 以确认更少的系统依赖。
+所以， 在管理 Dockerfile 时
 
+1. **选择或制作简单且符合业务需求的镜像**
+    + `1. 可被利用的漏洞或方式越少`
+    + `2. 镜像更小， 分发更快`
+2. 干净整洁的 docker context 环境
+3. 合理的命令层级顺序， 以达到更多的 layer 复用。
+
+其他 Dockerfile 使用探究， 可以阅读 
++ [使用 Dockerfile 构建镜像注意事项](https://tangx.in/2019/03/26/how-to-build-a-image-with-dockerfile/)
++ [Dockerfile 中 ARG 的使用与其的作用域探究](https://tangx.in/2020/11/06/dockerfiles-args-scope)
++ [多阶构建](https://tangx.in/2018/10/30/docker-multi-stage-build/)
 
 ## 0xGG 参考文档
 
