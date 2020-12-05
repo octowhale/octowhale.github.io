@@ -1,12 +1,12 @@
 ---
 layout: post
-title: 从 shell 反弹实现分析 解决 Dockerfile 基础镜像选择及精简
+title: 学习 shell 反弹实现， 优化 Docker 基础镜像安全
 categories: [docker, security]
 description: 优化精简容器镜像， 降低 shell 反弹攻击风险
 keywords: docker, dockerfile, security, shell 
 ---
 
-# 从 shell 反弹实现分析 解决 Dockerfile 基础镜像选择及精简
+# 学习 shell 反弹实现， 优化 Docker 基础镜像安全
 
 天天都在说优化 Dockerfile。 到底怎么优化， 优化后的检验指标又是什么？ 没有考虑清楚行动目的， 隔空放炮， 必然徒劳无功。
 
