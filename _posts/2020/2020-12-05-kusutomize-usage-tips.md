@@ -8,21 +8,16 @@ keywords: keyword1, keyword2
 
 # k8s 部署工具 kustomize 的实用小技巧
 
-`kustomize`, 完全一款 k8s 部署工具届 *嫁衣神功* ， 偷懒神器。
+在 k8s 上的部署， 大多组件都默认提供 helm 方式。 在实际使用中， 常常需要针对不通环境进行差异化配置。 个人觉得， **使用 kustomize 替换在使用和管理上，比直接使用 helm 参数更为清晰** 。 
 
-关于 kustomize 的介绍文章很多就不赘述了。 
+同时组件在一个大版本下的部署方式通常不会有太大的变化， 没有必要重新维护一套部署文档，其实也不一定有精力这样做。 因此使用 `helm template .` 生成默认部署模版，再使用 kustomize 进行定制化的参数管理是非常方便的。
+
+`kustomize` 作为一款 k8s 部署工具届 *嫁衣神功* ， 偷懒神器。 关于 kustomize 的介绍文章很多，就不再赘述了。 
+
+想要了解使用方法， 可以参考: [官方文档 kustomize API](https://kubectl.docs.kubernetes.io/references/kustomize/)
+
 
 这里主要将一下笔者日常实用中的几个小技巧。
-
-对于一个完整的组件 如 **ELK**， **LOKI** ， 不经没有必要重新维护一套部署文档， 也不一定有精力这样做。 最主要的是， 不一定有官方支持的写的好。 
-
-在实际使用中， 组件在一个大版本下的部署方式并不会有太大的变化。 因此完全可以直接使用 helm 生成模版， 并使用 kustomize 进行定制化的替换。
-
-个人觉得， **使用 kustomize 替换在使用和管理上，比直接使用 helm 参数更为清晰** 。
-
-本文有大量代码和配置， demo 文件已经放在 Github: [tangx/kusutomize-usage-tips-demo](https://github.com/tangx/kusutomize-usage-tips-demo)
-
-更多 API 细节， 参考官方文档: [kustomize API](https://kubectl.docs.kubernetes.io/references/kustomize/)
 
 ## 准备
 
@@ -32,6 +27,9 @@ keywords: keyword1, keyword2
 kubectl version --client=true
 Major:"1", Minor:"19", GitVersion:"v1.19.3", 
 ```
+
+
+本文有大量代码和配置， demo 文件已经放在 Github: [tangx/kusutomize-usage-tips-demo](https://github.com/tangx/kusutomize-usage-tips-demo)
 
 **文件结构目录**
 
