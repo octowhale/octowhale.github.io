@@ -19,7 +19,11 @@ keywords: keyword1, keyword2
 
 这里主要将一下笔者日常实用中的几个小技巧。
 
-## 准备
+## 案例分享
+
+使用 helm 生成部署模板并使用 kusutomize 定制化: [kustomize-grafana-loki-stack](https://github.com/tangxin/kustomize-grafana-loki-stack)
+
+## Demo 实践
 
 本文实践基于 `kubectl v1.19.3` 
 
