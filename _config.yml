@@ -75,9 +75,12 @@ gems:
     - jemoji
 #     - jekyll-mentions
 collections:
-    wiki:
+    # wiki:
+    #     output: true
+    #     permalink: /wiki/:path/
+    topic:
         output: true
-        permalink: /wiki/:path/
+        permalink: /topic/:path/
 
 repository: tangx/tangx.github.io
 
