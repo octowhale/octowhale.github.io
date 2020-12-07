@@ -11,9 +11,9 @@ permalink: /topic/
 > Go Gitlab
 
 <ul class="listing">
-{% for wiki in site.wiki %}
-{% if wiki.title != "Wiki Template" %}
-<li class="listing-item"><a href="{{ wiki.url }}">{{ wiki.title }}</a></li>
+{% for topic in site.topic %}
+{% if topic.title != "topic Template" %}
+<li class="listing-item"><a href="{{ topic.url }}">{{ topic.title }}</a></li>
 {% endif %}
 {% endfor %}
 </ul>
