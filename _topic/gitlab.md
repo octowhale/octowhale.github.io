@@ -13,7 +13,7 @@ keywords: gitlab
 1. **基础管理**
     1. [安装 Gitlab](/2020/12/07/install-gitlab/)
     2. 备份与恢复
-    
+
 2. **CICD**
     1. CICD 工作流
     1. **Gitlab Runner**
