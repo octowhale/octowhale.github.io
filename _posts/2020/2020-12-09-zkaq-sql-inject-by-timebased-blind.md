@@ -88,8 +88,3 @@ Table: loflag
 | zKaQ-time-zxxz |
 +----------------+
 ```
-
-## 0xGG 参考文章
-
-+ [SQL布尔型盲注思路分析（入门必看）](https://blog.csdn.net/qq_35544379/article/details/77351783)
-
