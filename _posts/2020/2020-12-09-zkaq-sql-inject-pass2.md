@@ -61,6 +61,8 @@ http://injectx1.lab.aqlab.cn:81/Pass-02/index.php?id=1' and 1=2 union select 1,2
 
 ## 0x02. 数据查找
 
+找到了 **注入显示点** 之后， 剩下的就是是 **联合查询** 的问题了 ， 可以说的东西不多
+
 ### 0x02.1. 查询库名, 表名
 
 由于有 **2 和 3** 两个可注入点， 因此在构造语句的时候，使用了 **2条自查询**
@@ -86,6 +88,8 @@ http://injectx1.lab.aqlab.cn:81/Pass-02/index.php?id=1' and 1=2 union select 1,2
 
 -- columns: Id,flag
 ```
+
+![dump-column-name.png](/images/post/2020/12/09/dump-column-name.png)
 
 ### 0x02.3. 查询 flag 所有字段值
 
