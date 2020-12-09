@@ -1,9 +1,9 @@
 ---
 layout: post
 title: 掌控安全 SQL 注入靶场练习Pass2 - 单引号报错注入
-categories: [安全]
+categories: [安全, SQL注入]
 description: sql 注入靶场练习 单引号报错注入
-keywords: sql注入, oob带外, dnslog
+keywords: SQL注入, oob带外, dnslog
 ---
 
 # 掌控安全 SQL 注入靶场练习Pass2 - 单引号报错注入

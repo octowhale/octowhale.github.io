@@ -1,9 +1,9 @@
 ---
 layout: post
 title: 掌控安全 SQL 注入靶场练习 Pass1 - 报错注入
-categories: [安全]
+categories: [安全, SQL注入]
 description: sql注入练习 报错注入
-keywords: sql注入
+keywords: SQL注入
 ---
 
 # 掌控安全 SQL 注入靶场练习 Pass1 - 报错注入
