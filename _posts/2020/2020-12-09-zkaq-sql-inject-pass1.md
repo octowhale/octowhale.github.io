@@ -1,9 +1,9 @@
 ---
 layout: post
-title: template page
-categories: [cate1, cate2]
-description: some word here
-keywords: keyword1, keyword2
+title: 掌控安全 SQL 注入靶场练习 Pass1 - 报错注入
+categories: [安全]
+description: sql注入练习 报错注入
+keywords: sql注入
 ---
 
 # 掌控安全 SQL 注入靶场练习 Pass1 - 报错注入
