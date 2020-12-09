@@ -167,7 +167,7 @@ docker buildx bake -f bake.hcl # -f alias to bake
 
 可以在 [tangx/alpine:buildx-bake-hcl](https://hub.docker.com/repository/docker/tangx/alpine/tags?page=1&name=buildx-bake-hcl) 看到，生成的镜像， 支持了 5个 cpu 架构。
 
-![buildx-bake-demo](/images/post/202006/10/buildx-bake-hcl-demo.png)
+![buildx-bake-demo](/images/post/2020/06/10/buildx-bake-hcl-demo.png)
 
 
 + 执行过程
