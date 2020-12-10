@@ -17,7 +17,7 @@ keywords: SQL注入, SQLMAP
 ```sql
 -- 数据库数量探测
 
-http://injectx1.lab.aqlab.cn:81/Pass-10/index.php?id=1  AND (SELECT COUNT(*) FROM information_schema.SCHEMATA)=6
+http://vulhub.example.com:81/Pass-10/index.php?id=1  AND (SELECT COUNT(*) FROM information_schema.SCHEMATA)=6
 
 ```
 

