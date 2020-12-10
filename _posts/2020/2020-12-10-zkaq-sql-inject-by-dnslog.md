@@ -180,7 +180,7 @@ select hex(concat(username,'___',password)) from maoshe.admin limit 1,1 ;
 > 是的，没错。 **不知道什么原因，我只执行了 2 次** 。 这就是一切 **惨案** 的源头。
 
 
-### 0x02.3.1 蒸汽时代，甩开膀子干
+### 0x02.3.2 蒸汽时代，甩开膀子干
 
 使用 **Chrome 开发者工具** 分析了一下 DNSLOG 的请求规则。 升级了工具。
 
