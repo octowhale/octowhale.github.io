@@ -1,12 +1,12 @@
 ---
 layout: post
-title: 掌控安全 SQL 注入靶场练习 - 布尔盲注
+title: 查询 MYSQL 数据库 系统库名、表名、字段名 SQL语句
 categories: [安全, SQL注入]
-description: 掌控安全 SQL 注入靶场练习 - 布尔盲注
+description: 查询 MYSQL 数据库 系统库名、表名、字段名 SQL语句
 keywords: SQL注入, SQLMAP
 ---
 
-# 掌控安全 SQL 注入靶场练习 - 布尔盲注
+# 查询 MYSQL 数据库 系统库名、表名、字段名 SQL语句
 
 > 注意: 由于 **引号** 的原因， 盲注时字符探测不能使用 **字符** 。 而应该使用 **ASCII** 进行转换。
 
