@@ -2,10 +2,10 @@
 #   Main Configs   #
 # ---------------- #
 baseurl:
-url: http://tangx.in
+url: http://www.sodev.cc
 date_format: "ordinal"
 title: aloha.Mr.Tang
-subtitle: "Pick it up, then write it down."
+subtitle: "Dev friendly with Sec and Ops"
 description: "Pick it up, then write it down."
 keywords: 
 timezone: Asia/Shanghai
