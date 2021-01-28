@@ -1,0 +1,17 @@
+version: '3.1'
+
+services:
+  web1:
+    image: cr.example.com/webappserve:latest
+    build: .
+    ports:
+      - 40080:80
+    environment:
+      APP_CONFIG: __App_CDN_URL=https://cdn.example.com;__App_SERVER_API=https://api.example.com;__App_USER=user1"
+  web2:
+    image: cr.example.com/webappserve:latest
+    build: .
+    ports:
+      - 30080:80
+    environment:
+      APP_CONFIG: __App_CDN_URL=https://cdn.EXAMPLE.COM;__App_SERVER_API=https://api.EXAMPLE.COM;__App_USER=user2
