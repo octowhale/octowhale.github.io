@@ -126,5 +126,5 @@ services:
 
 执行结果如下
 
-![frontend-dockernize.png](/images/post/2020/2021/01/28/frontend-dockernize.png)
+![frontend-dockernize.png](/images/post/2021/01/28/frontend-dockernize.png)
 
