@@ -2,7 +2,7 @@
 layout: post
 title: 静态前端网站容器化
 categories: [docker]
-description: 静态前端网站容器化
+description: 在容器启动的时候，将环境信息初始化到静态文件中，实现无状态镜像。 
 keywords: docker, js
 ---
 
