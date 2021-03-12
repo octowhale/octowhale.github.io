@@ -21,6 +21,8 @@ keywords: gitlab
     1. Cache and Artifacts
     1. Tag and Release
     1. CI Trigger
+    1. Gitlab CI
+        + [`!reference tags`](/2021/03/12/gitlab-ci-reference-tags/)
 
 3. **安全**
 
