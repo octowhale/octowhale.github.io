@@ -28,6 +28,17 @@ func main() {
 
 }
 
+func Test_Regexp(t *testing.T) {
+	chars := `('|")`
+	str := `"123'abc'456"`
+	re := regexp.MustCompile(chars)
+	
+	s := re.ReplaceAllString(str, `\$1`) // 这里可以使用 ` 反引号
+	fmt.Println(s) // \"123\'abc\'456\"
+
+}
+
+
 // https://stackoverflow.com/questions/43586091/how-golang-replace-string-by-regex-group
 ```
 
