@@ -6,7 +6,7 @@ description: 前端网站实现容器化的一个核心要点， 就是 html5 �
 keywords: js, html5, docker, dockerize
 ---
 
-# 真.静态前端网站容器化要点
+# 使用js读取html meta 实现静态前端网站容器化
 
 
 之前写过一篇关于前端容器化的文章， [静态前端网站容器化](http://www.sodev.cc/2021/01/28/frontend-webapp-dockerize/)。 现在看来， 那个方案的可操作性并不高， 而且很弱智。 
@@ -91,7 +91,7 @@ keywords: js, html5, docker, dockerize
 
 ### 2.2. 变量渲染值要怎么约定
 
-信息的你可以能已经发现， 上面提供的 `index.html` 在编译的时候会报错。
+细心的你可以能已经发现， 上面提供的 `index.html` 在编译的时候会报错。
 因为 `${APP_CONFIG}` 这种 **shell** 环境变量的写法， 在 **js** 中也是相同语意的。
 因此造成了 `${APP_CONFIG}` 作用域的冲突。
 
