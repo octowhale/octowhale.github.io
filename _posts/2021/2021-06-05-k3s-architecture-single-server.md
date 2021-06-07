@@ -29,6 +29,8 @@ K3s 单节点集群的架构如下图所示，该集群有一个内嵌 SQLite �
 
 ## 安装
 
+### 安装 Server
+
 ```bash
 # 通用
 curl -sfL https://get.k3s.io | sh -
@@ -40,6 +42,10 @@ curl -sfL http://rancher-mirror.cnrancher.com/k3s/k3s-install.sh | INSTALL_K3S_M
 ```
 
 执行命令， 不到一分钟集群就安装好了
+
++ K3s 服务将被配置为在节点重启后或进程崩溃或被杀死时自动重启。
++ 将安装其他实用程序，包括kubectl、crictl、ctr、k3s-killall.sh 和 k3s-uninstall.sh。
++ 将kubeconfig文件写入到/etc/rancher/k3s/k3s.yaml，由 K3s 安装的 kubectl 将自动使用该文件。
 
 ```log
 curl -sfL http://rancher-mirror.cnrancher.com/k3s/k3s-install.sh | INSTALL_K3S_MIRROR=cn sh -
@@ -61,34 +67,56 @@ curl -sfL http://rancher-mirror.cnrancher.com/k3s/k3s-install.sh | INSTALL_K3S_M
 [INFO]  systemd: Starting k3s
 ```
 
+### 安装 Client
+
+安装方法与 Server 类似。
+
+不过需要额外指定 `K3S_URL` 和 `K3S_TOKEN` 环境变量运行安装脚本， 以指定添加到的目标 Server 集群。
+
++ 设置 `K3S_URL` 参数会使 K3s 以 worker 模式运行。K3s agent 将在所提供的 URL 上向监听的 K3s 服务器注册。
++ `K3S_TOKEN` 使用的值存储在你的服务器节点上的 `/var/lib/rancher/k3s/server/node-token` 路径下。
+
+
+
+
+
+```bash 
+## 通用命令
+curl -sfL https://get.k3s.io | K3S_URL=https://myserver:6443 K3S_TOKEN=mynodetoken sh -
+
+## 国内用户
+curl -sfL http://rancher-mirror.cnrancher.com/k3s/k3s-install.sh | INSTALL_K3S_MIRROR=cn K3S_URL=https://myserver:6443 K3S_TOKEN=mynodetoken sh -
+
+```
+
 ### 使用 kubectl 管理集群
 
-```
-kubectl get node
-kubectl get pod --all-namespaces
+可以看到 `kubectl` 命令是 `k3s` 命令的一个子命令。
+
+```bash
+# ls -al /usr/local/bin/kubectl
+lrwxrwxrwx 1 root root 3 Feb  2 17:12 /usr/local/bin/kubectl -> k3s
 ```
 
-执行 kubectl , 毫无切换成本
+现在可以任意使用熟悉的 `kubectl` 进行集群管理了。
 
 ```bash
 # kubectl get node
-NAME             STATUS   ROLES                  AGE   VERSION
-vm-0-41-ubuntu   Ready    control-plane,master   33s   v1.21.1+k3s1
+NAME               STATUS     ROLES                  AGE    VERSION
+test       Ready      control-plane,master   124d   v1.20.7+k3s1
+test-0001   NotReady   <none>                 3s     v1.21.1+k3s1
 
-# kubectl get pod --all-namespaces
-NAMESPACE     NAME                                      READY   STATUS              RESTARTS   AGE
-kube-system   helm-install-traefik-6pgml                0/1     ContainerCreating   0          26s
-kube-system   helm-install-traefik-crd-nxhww            0/1     ContainerCreating   0          26s
-kube-system   local-path-provisioner-5ff76fc89d-2zjnn   0/1     ContainerCreating   0          26s
-kube-system   metrics-server-86cbb8457f-2nhmb           0/1     ContainerCreating   0          26s
-kube-system   coredns-7448499f4d-lplnk                  0/1     ContainerCreating   0          26s
+kubectl get pod --all-namespaces
 ```
-
 
 ## 卸载
 
+k3s 的所有命令脚本，默认都在 `/usr/local/bin` 下， 以 `k3s-*` 开头。 
 
 ```bash
+# server
 /usr/local/bin/k3s-uninstall.sh
 
+# agent
+/usr/local/bin/k3s-agent-uninstall.sh
 ```
