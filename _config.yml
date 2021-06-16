@@ -2,7 +2,7 @@
 #   Main Configs   #
 # ---------------- #
 baseurl:
-url: http://www.sodev.cc
+url: https://tangx.in
 date_format: "ordinal"
 title: aloha.Mr.Tang
 subtitle: "Dev friendly with Sec and Ops"
