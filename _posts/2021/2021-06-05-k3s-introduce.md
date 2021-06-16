@@ -8,7 +8,7 @@ keywords: k3s, k8s, cloudnative
 
 # 什么是 K3s?
 
-![k3s-roadmap-intro](img/k3s/k3s-roadmap-intro.png)
+![k3s-roadmap-intro](../img/k3s/k3s-roadmap-intro.png)
 
 K3s 是一个轻量级的 Kubernetes 发行版，它针对边缘计算、物联网等场景进行了高度优化。
 

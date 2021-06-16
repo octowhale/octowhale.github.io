@@ -37,7 +37,7 @@ GITLAB_PrivateToken="Adfasdfadfasdfaksdjf"
 ./gitlab-mergebot
 ```
 
-![](2021/06/16/img/mergebot/make-up.png)
+![](../img/mergebot/make-up.png)
 
 ### 2. 源分支管理
 
@@ -50,13 +50,13 @@ GITLAB_PrivateToken="Adfasdfadfasdfaksdjf"
 1. `merge_commit_message` 的内容为 `merge request` 的标题 **Title** 内容。
 2. `squash_commit_message` 的内容为 `merge request` 的描述 **Description** 内容。
 
-![commit-message](2021/06/16/img/mergebot/commit-message.png)
+![commit-message](../img/mergebot/commit-message.png)
 
 **Assignee**
 
 2. 将 **Assignee** 选择人为 **mergebot**
 
-![assignee-bot](2021/06/16/img/mergebot/assignee-bot.png)
+![assignee-bot](../img/mergebot/assignee-bot.png)
 
 
 
