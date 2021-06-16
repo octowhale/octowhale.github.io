@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 5分钟k3s - k3s单节点架构介绍与安装卸载管理
-categories: [cate1, cate2]
+categories: [k3s]
 description: k3s单节点架构介绍与安装卸载管理
 keywords: k3s架构, k3s安装, k3s卸载
 ---
