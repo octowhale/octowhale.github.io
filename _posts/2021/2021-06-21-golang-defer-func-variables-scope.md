@@ -100,7 +100,7 @@ func UnnamedResult(i, j int) int {
 go tool compile -N -l -S  main.go
 ```
 
-![name-unnamed-result.png](/images/post/2021/06/named-unnamed-result/named-unnamed-result.png)
+![name-unnamed-result.png](/images/post/2021/06/golang-named-unnamed-result/named-unamed-result.png    )
 
 
 从汇编结果可以看到: 
@@ -125,7 +125,7 @@ func ReformResult(i, j int) (r2 int) {
 
 ## 实战练习一下
 
-![little-rabbit](/images/post/2021/06/mergebot/little-rabbit.jpeg)
+![little-rabbit](/images/post/2021/06/golang-named-unnamed-result/little-rabbit.jpeg)
 
 根据之前所说， 我们这里来对函数做一下整形手术。
 
