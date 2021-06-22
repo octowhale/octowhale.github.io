@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 正确理解 golang 函数变量的作用域
+title: 正确理解 golang 函数变量的作用域, 管你 defer 不 defer
 categories: [golang]
 description: 
 keywords: golang, defer
