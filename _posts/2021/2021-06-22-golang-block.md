@@ -38,12 +38,14 @@ func Serve(queue chan *Request) {
 
 ## Blocks
 
+> https://golang.org/ref/spec#Blocks
+
 > A `block` is a possibly empty sequence of declarations and statements within matching brace brackets.
 
 
 ### 什么是 `Blocks`？ 
 
-1. 用 **打括号** `{}` 包围的一个代码块。
+1. 用 **大括号** `{}` 包围的一个代码块。
 2. 这个代码块内容也可以为空， 也可以是有内容。
 
 ```go
