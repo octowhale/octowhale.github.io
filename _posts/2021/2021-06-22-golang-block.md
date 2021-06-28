@@ -104,7 +104,7 @@ StatementList = { Statement ";" } .
 
 因此， 在 22 行 `i:=i` 是合法的， **在 `statement block` 中产生了 `同名变量覆盖`**。
 
-![](/images/post/2021/06/golang-block/for-block-1.png)
+![](/images/post/2021/06/golang-block/for-block-2.png)
 
 也就是因为 {} 是 for 子block 的原因， for 的 post 可以修改变量 i， 在 statement 中也可以修改变量 i
 
