@@ -49,8 +49,8 @@ deploy_clean: # 清理动作
 有几点需要注意:
 
 1. 在 `deploy_action` job 中需要设置 **环境变量与触发器** 
-2. 在 `deploy_clean` job 中需要设置 `GIT_STRATEGY: none` 避免默认 git 操作而造成失败: [Git Strategy | GitLab](https://docs.gitlab.com/ee/ci/runners/configure_runners.html#git-strategy)
-3. 环境变量本身是有作用域的(仓库, 分支, Commit 等)， 其选用应该选择与 `branch/tag` 生命周期一致的变量, 例如这里的 `clean/$CI_COMMIT_REF_NAME`: [Ref Specs for Runners | GitLab](https://docs.gitlab.com/ee/ci/pipelines/index.html#ref-specs-for-runners)
+2. 在 `deploy_clean` job 中需要设置 `GIT_STRATEGY: none` 避免默认 git 操作而造成失败: [Git Strategy - GitLab](https://docs.gitlab.com/ee/ci/runners/configure_runners.html#git-strategy)
+3. 环境变量本身是有作用域的(仓库, 分支, Commit 等)， 其选用应该选择与 `branch/tag` 生命周期一致的变量, 例如这里的 `clean/$CI_COMMIT_REF_NAME`: [Ref Specs for Runners - GitLab](https://docs.gitlab.com/ee/ci/pipelines/index.html#ref-specs-for-runners)
 4. `delpoy_action` 与 `delpoy_clean` 两个 job 的 rules 应该保持一致， 否则可能造成 pipeline 不能覆盖的问题。
 
 
