@@ -12,14 +12,12 @@ keywords: gitlab, branch delete, ci
 
 ### Stopping an environment
 
-When you stop an environment:
-* On the **Environments** page, it moves from the list of **Available** environments to the list of **Stopped** environments.
-* An  [on_stop action](https://docs.gitlab.com/ee/ci/yaml/README.html#environmenton_stop) , if defined, is executed.
-Dynamic environments stop automatically when their associated branch is deleted.
+1. 尝试在 **JOB A** 中申明一个变量，并停止。
+2. 使用 [`on_stop` action](https://docs.gitlab.com/ee/ci/yaml/README.html#environmenton_stop) 动作, 在删除分支时(同时删除变量), 触发运行 **JOB B**
 
 #### Stop an environment when a branch is deleted
 
-> [Stop an environment when a branch is deleted | GitLab](https://docs.gitlab.com/ee/ci/environments/index.html#stop-an-environment-when-a-branch-is-deleted)  
+> [Stop an environment when a branch is deleted GitLab](https://docs.gitlab.com/ee/ci/environments/index.html#stop-an-environment-when-a-branch-is-deleted)  
 
 在 CI 中配置一个 **环境变量** , 当 branch 被删除的时候清理该 **环境变量**， 触发 `on_stop` 动作， 需求。
 
@@ -60,7 +58,7 @@ deploy_clean: # 清理动作
 
 ### Ref Specs for Runners
 
-> [Ref Specs for Runners | GitLab](https://docs.gitlab.com/ee/ci/pipelines/index.html#ref-specs-for-runners)  
+> [Ref Specs for Runners - GitLab](https://docs.gitlab.com/ee/ci/pipelines/index.html#ref-specs-for-runners)  
 
 When a runner picks a pipeline job, GitLab provides that job’s metadata. This includes the  [Git refspecs](https://git-scm.com/book/en/v2/Git-Internals-The-Refspec) , which indicate which ref (branch, tag, and so on) and commit (SHA1) are checked out from your project repository.
 
@@ -68,7 +66,7 @@ The refs `refs/heads/<name>` and `refs/tags/<name>` exist in your project reposi
 
 ### Git Strategy
 
-> [Git Strategy | GitLab](https://docs.gitlab.com/ee/ci/runners/configure_runners.html#git-strategy)
+> [Git Strategy - GitLab](https://docs.gitlab.com/ee/ci/runners/configure_runners.html#git-strategy)
 There are three possible values: `clone`, `fetch`, and `none` . 
 
 If left unspecified, jobs use the  [project’s pipeline setting](https://docs.gitlab.com/ee/ci/pipelines/settings.html#git-strategy) .
