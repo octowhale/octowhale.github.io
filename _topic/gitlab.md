@@ -29,3 +29,6 @@ keywords: gitlab
 4. **integrations**
     1. [plantuml](https://docs.gitlab.com/ee/administration/integration/plantuml.html)
     2. [kroki](https://docs.gitlab.com/ee/administration/integration/kroki.html)
+
+5. **扩展**
+   1. [gitlab mergebot](/2021/06/16/gitlab-mergebot/)
